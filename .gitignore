@@ -21,4 +21,4 @@ pnpm-debug.log*
 *.sw?
 
 # website dirs
-website/src/node_modules
+website/
