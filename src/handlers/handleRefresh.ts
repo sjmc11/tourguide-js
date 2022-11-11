@@ -1,8 +1,11 @@
 import {TourGuideClient} from "../Tour";
-import {computeTourSteps} from "./tourStart";
+import computeTourSteps from "../core/steps";
 import {renderDialogHtml, updateDialogHtml} from "../core/dialog";
 import waitForElm from "../util/util_wait_for_element";
 
+/**
+ * handleRefreshTour
+ */
 async function handleRefreshTour(this: TourGuideClient) {
     return new Promise(async (resolve, reject) => {
         /**
@@ -29,12 +32,18 @@ async function handleRefreshTour(this: TourGuideClient) {
     })
 }
 
+/**
+ * handleRefreshDialog
+ */
 async function handleRefreshDialog(this: TourGuideClient) {
     return new Promise(async (resolve, reject) => {
+
         /**
          * Hard refresh dialog HTML - for option updates or hard refresh methods
          */
-        this.dialog.innerHTML = await renderDialogHtml(this).catch((e)=>{
+        await renderDialogHtml(this).then((htmlResp)=>{
+            if(htmlResp) this.dialog.innerHTML = htmlResp
+        }).catch((e)=>{
             if(this.options.debug) console.warn(e)
         })
 
@@ -64,9 +73,9 @@ async function handleRefreshDialog(this: TourGuideClient) {
             await this.initListeners()
 
             // Add transition class to dialog after additional delay to prevent flying in from random position
-            if (this.options.dialogAnimate) setTimeout(() => {
-                this.dialog.classList.add('animate-position')
-            }, 600)
+            // if (this.options.dialogAnimate) setTimeout(() => {
+            //     this.dialog.classList.add('animate-position')
+            // }, 600)
 
             return true
         })

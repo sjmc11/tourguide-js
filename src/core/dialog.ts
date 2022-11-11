@@ -1,17 +1,14 @@
 import {computeDots, dotsWrapperHtmlString} from "./dots";
 import {TourGuideClient} from "../Tour";
+import {arrow, autoPlacement, computePosition as fui_computePosition, offset, Placement, shift} from "@floating-ui/dom";
 
-async function createTourGuideDialog(){
+/**
+ * createTourGuideDialog
+ */
+async function createTourGuideDialog(this : TourGuideClient){
     // Create base tour dialog element
     this.dialog = document.createElement('div')
     this.dialog.classList.add('tg-dialog')
-
-    // // Reset initialized listeners
-    // this.closeBtnClickEvent = false
-    // this.nextBtnClickEvent = false
-    // this.prevBtnClickEvent = false
-    // this.keyPressEvent = false
-    // this.outsideClickEvent = false
 
     // Render HTML content
     await renderDialogHtml(this).then((html) => {
@@ -23,11 +20,16 @@ async function createTourGuideDialog(){
     return true
 };
 
+/**
+ * renderDialogHtml
+ * @param tgInstance
+ */
 async function renderDialogHtml(tgInstance : TourGuideClient){
+
 
     /** Update dialog options **/
     if(tgInstance.options.dialogClass) tgInstance.dialog.classList.add(tgInstance.options.dialogClass)
-    if(tgInstance.options.dialogZ) tgInstance.dialog.style.zIndex = tgInstance.options.dialogZ
+    if(tgInstance.options.dialogZ) tgInstance.dialog.style.zIndex = String(tgInstance.options.dialogZ)
     tgInstance.dialog.style.width = tgInstance.options.dialogWidth ? (tgInstance.options.dialogWidth + 'px') : 'auto'
     if(tgInstance.options.dialogMaxWidth) tgInstance.dialog.style.maxWidth = tgInstance.options.dialogMaxWidth + 'px'
 
@@ -78,6 +80,10 @@ async function renderDialogHtml(tgInstance : TourGuideClient){
     return htmlRes
 }
 
+/**
+ * updateDialogHtml
+ * @param tgInstance
+ */
 function updateDialogHtml(tgInstance : TourGuideClient){
     return new Promise((resolve, reject) => {
 
@@ -106,7 +112,7 @@ function updateDialogHtml(tgInstance : TourGuideClient){
 
         // Next/Finish button
         const nextBtn = document.getElementById('tg-dialog-next-btn')
-        if(nextBtn) nextBtn.innerHTML = (tgInstance.activeStep + 1) >= tgInstance.tourSteps.length ? tgInstance.options.finishLabel : tgInstance.options.nextLabel
+        if(nextBtn) nextBtn.innerHTML = ((tgInstance.activeStep + 1) >= tgInstance.tourSteps.length ? tgInstance.options.finishLabel : tgInstance.options.nextLabel) as string
 
         // Step progress
         const tgProgress = document.getElementById('tg-step-progress')
@@ -116,4 +122,82 @@ function updateDialogHtml(tgInstance : TourGuideClient){
     })
 }
 
-export {createTourGuideDialog, renderDialogHtml, updateDialogHtml}
+/**
+ * computeDialogPosition
+ * @param tgInstance
+ */
+function computeDialogPosition(tgInstance : TourGuideClient) {
+    return new Promise(async (resolve) => {
+        const arrowElement: HTMLElement | null = document.querySelector('#tg-arrow');
+
+        let targetElem = tgInstance.tourSteps[tgInstance.activeStep].target as HTMLElement
+
+        // Center position if body
+        if (targetElem === document.body) {
+
+            // apply positioning
+            Object.assign(tgInstance.dialog.style, {
+                top: `${(((window.innerHeight / 2.25)) - (tgInstance.dialog.clientHeight / 2))}px`,
+                left: `${((window.innerWidth / 2) - (tgInstance.dialog.clientWidth / 2))}px`,
+                position: 'fixed',
+            });
+            // Add fixed class
+            tgInstance.dialog.classList.add('tg-dialog-fixed')
+            // hide arrow
+            if(arrowElement) arrowElement.style.display = 'none'
+            return resolve(true)
+        }
+
+        // Affirm positioning method and arrow visibility
+        tgInstance.dialog.style.position = 'absolute'
+        // Remove fixed class
+        tgInstance.dialog.classList.remove('tg-dialog-fixed')
+        // Display arrow
+        if(arrowElement) arrowElement.style.display = 'inline-block'
+
+        // Apply floating-ui positioning
+        fui_computePosition(targetElem, tgInstance.dialog, {
+            placement: tgInstance.options.dialogPlacement as Placement,
+            middleware: [
+                autoPlacement({
+                    autoAlignment: true,
+                    padding: 5
+                }),
+                shift({padding: 15}),
+                arrow({element: arrowElement as HTMLElement}),
+                offset(20)
+            ],
+        }).then(({x, y, placement, middlewareData}) => {
+
+            // apply positioning
+            Object.assign(tgInstance.dialog.style, {
+                left: `${x}px`,
+                top: `${y}px`,
+            });
+
+            // Arrow data
+            if(middlewareData.arrow) {
+                const arrowX = middlewareData.arrow.x
+                const arrowY = middlewareData.arrow.y
+
+                const staticSide = {
+                    top: "bottom",
+                    right: "left",
+                    bottom: "top",
+                    left: "right",
+                }[placement.split('-')[0]];
+
+                // Position arrow
+                if (arrowElement) Object.assign(arrowElement.style, {
+                    left: arrowX != null ? `${arrowX}px` : '',
+                    top: arrowY != null ? `${arrowY}px` : '',
+                    [staticSide as string]: "-4px",
+                });
+            }
+            return resolve(true)
+        })
+    })
+}
+
+
+export {createTourGuideDialog, renderDialogHtml, updateDialogHtml, computeDialogPosition}

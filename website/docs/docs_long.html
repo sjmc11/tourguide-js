@@ -2,7 +2,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="/tg-icon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Docs | TourGuide JS</title>
     <style type="text/css">
@@ -204,7 +204,7 @@
             <p class="text-neutral-500 mb-3">To create a tour, you must create a tour instance.</p>
 
             <code class="bg-neutral-100 dark:bg-zinc-800/50 rounded-md text-neutral-700 dark:text-white p-3 block text-xs mb-6">
-                <span>const tg = new TourGuide(options? : TourGuideOptions, steps? : TourGuideStep[])</span>
+                <span>const tg = new TourGuideClient(options? : TourGuideOptions, steps? : TourGuideStep[])</span>
                 <!--                <p class="my-5 uppercase opacity-50 bold select-none">&#45;&#45; or &#45;&#45;</p>-->
                 <!--                <span>const tg = TourGuide(options? : TourGuideOptions, steps? : TourGuideStep[])</span>-->
             </code>
@@ -310,7 +310,7 @@
                 <p class="ml-3">order: ""</p>
                 <p class="ml-3">group: ""</p>
                 <p class="mb-3">}])</p>
-                <p>const tg = new TourGuide({}, steps)</p>
+                <p>const tg = new TourGuideClient({}, steps)</p>
             </code>
             <p>To add steps programmatically use <a href="#addsteps" class="cursor-pointer hover:text-indigo-500">addSteps()</a>.</p>
         </section>
@@ -326,7 +326,7 @@
         <p class="mb-3">Options can be set on TourGuide creation as well as using <a href="#setoptions" class="cursor-pointer hover:text-indigo-500">setOptions()</a>.</p>
 
         <code class="bg-neutral-100 dark:bg-zinc-800/50 rounded-md text-neutral-700 dark:text-white p-3 block text-xs mb-12">
-            <p>const tg = new TourGuide(<span class="text-amber-600 dark:text-amber-300">{</span></p>
+            <p>const tg = new TourGuideClient(<span class="text-amber-600 dark:text-amber-300">{</span></p>
             <p class="ml-3 text-amber-600 dark:text-amber-300">dialogClass: 'my-custom-tour-class',</p>
             <p class="ml-3 text-amber-600 dark:text-amber-300">showStepProgress: 'false',</p>
             <p class="ml-3 opacity-50">// additional options</p>
@@ -614,7 +614,7 @@
         <p class="mb-6">Event methods can optionally return a promise if you would like to explicitly accept and reject events. By default, event methods are handled asynchronously so blocking functions will be waited on before continuing.</p>
 
         <code class="bg-neutral-100 mb-6 dark:bg-zinc-800/50 rounded-md text-neutral-700 dark:text-white p-3 block text-xs">
-            <span class="block opacity-50">const tg =  new TourGuide()</span>
+            <span class="block opacity-50">const tg =  new TourGuideClient()</span>
             </br>
             <span class="block">tg.onFinish(async ()=>{</span>
             <span class="block ml-3"><span class="opacity-50">// prevent showing alert if already finished tour</span></span>

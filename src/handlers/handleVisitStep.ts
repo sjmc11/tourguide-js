@@ -1,9 +1,11 @@
 import {TourGuideClient} from "../Tour";
-import {arrow, autoPlacement, computePosition, offset, Placement} from "@floating-ui/dom";
-import {computeDialogPosition, updateDialogHtml} from "../core/dialog";
+import {updateDialogHtml} from "../core/dialog";
 import scrollToTarget from "../core/scrollTo";
-import {computeBackdropPosition} from "../core/backdrop";
 
+/**
+ * handleVisitStep
+ * @param stepIndex
+ */
 async function handleVisitStep(this : TourGuideClient, stepIndex: "next" | "prev" | number) {
     return new Promise(async (resolve, reject) => {
         /**
@@ -29,6 +31,9 @@ async function handleVisitStep(this : TourGuideClient, stepIndex: "next" | "prev
     })
 }
 
+/**
+ * handleVisitNextStep
+ */
 async function handleVisitNextStep(this : TourGuideClient) {
     return new Promise(async (resolve, reject) => {
         const stepIndex = this.activeStep + 1
@@ -41,6 +46,9 @@ async function handleVisitNextStep(this : TourGuideClient) {
     })
 }
 
+/**
+ * handleVisitPrevStep
+ */
 async function handleVisitPrevStep(this : TourGuideClient) {
     return new Promise(async (resolve, reject) => {
         const stepIndex = this.activeStep - 1
@@ -53,7 +61,12 @@ async function handleVisitPrevStep(this : TourGuideClient) {
     })
 }
 
-function goToStep(tgInstance: TourGuideClient, stepIndex : number, refresh : boolean = false){
+/**
+ * goToStep
+ * @param tgInstance
+ * @param stepIndex
+ */
+function goToStep(tgInstance: TourGuideClient, stepIndex : number){
     return new Promise(async (resolve, bail) => {
 
         /**
@@ -112,7 +125,8 @@ function goToStep(tgInstance: TourGuideClient, stepIndex : number, refresh : boo
         // If target is string, query element by selector
         if(typeof nextStep.target === "string") tgInstance.tourSteps[stepIndex].target = document.querySelector(nextStep.target as string)
         // If target is empty or not found, set target to centered backdrop
-        if(!nextStep.target) tgInstance.tourSteps[stepIndex].target = document.body
+        // if(!nextStep.target) tgInstance.tourSteps[stepIndex].target = document.body
+        if(!nextStep.target || !tgInstance.tourSteps[stepIndex].target) tgInstance.tourSteps[stepIndex].target = document.body
 
 
         /** Set active step **/
@@ -154,48 +168,10 @@ function goToStep(tgInstance: TourGuideClient, stepIndex : number, refresh : boo
     })
 }
 
-function computeTourPositions(this : TourGuideClient){
-    return new Promise(async (resolve, reject) => {
-        /**
-         * Update overlay position
-         */
-        this.backdrop.style.display = "block"
-        await computeBackdropPosition(this)
-
-        /**
-         * Update dialog position
-         */
-        this.dialog.style.display = 'block'
-        await computeDialogPosition(this)
-        this.isVisible = true
-
-        /**
-         * Resize & Scroll
-         */
-
-        // Re-compute on resize
-        if (!window.onresize) window.onresize = () => {
-            computeBackdropPosition(this)
-            computeDialogPosition(this)
-        }
-
-        // Re-compute on resize - dialog only
-        if (!window.onscroll) window.onscroll = () => {
-            computeDialogPosition(this)
-        }
-
-        // Match timeout with CSS transition & smooth scroll
-        setTimeout(()=>{
-            return resolve(true)
-        }, 300)
-    })
-}
-
 export default handleVisitStep
 
 export {
     goToStep,
     handleVisitNextStep,
     handleVisitPrevStep,
-    computeTourPositions
 }

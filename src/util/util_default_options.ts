@@ -1,3 +1,5 @@
+import TourGuideOptionsType from "../core/options";
+
 const defaultOptions = {
     nextLabel: "Next",
     prevLabel: "Back",
@@ -9,6 +11,7 @@ const defaultOptions = {
     dialogWidth: 0,
     dialogMaxWidth: 340,
     dialogAnimate: true,
+    dialogPlacement: undefined,
     backdropClass: "",
     backdropColor: "rgba(20,20,21,0.84)",
     backdropAnimate: true,
@@ -25,9 +28,9 @@ const defaultOptions = {
     autoScrollSmooth: true,
     autoScrollOffset: 20,
     closeButton: true,
-    rememberStep: true,
-    debug: false,
+    rememberStep: false,
+    debug: true,
     steps: []
-}
+} as TourGuideOptionsType
 
 export default defaultOptions

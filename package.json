@@ -1,0 +1,26 @@
+{
+  "name": "tourguide",
+  "version": "0.0.1",
+  "description": "A customizable tour guide library for front-end applications.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --config webpack.config.js"
+  },
+  "keywords": [
+    "tour"
+  ],
+  "author": "JC",
+  "license": "ISC",
+  "dependencies": {
+    "@floating-ui/dom": "^1.0.3",
+    "sass": "^1.55.0"
+  },
+  "devDependencies": {
+    "@types/node": "^18.11.7",
+    "ts-loader": "^9.4.1",
+    "typescript": "^4.8.4",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^4.10.0"
+  }
+}

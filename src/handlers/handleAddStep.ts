@@ -1,8 +1,16 @@
 import {TourGuideClient, TourGuideStepType} from "../Tour";
-import {computeTourSteps, waitForElm} from "./tourStart";
+import computeTourSteps from "../core/steps";
 import {updateDialogHtml} from "../core/dialog";
+import waitForElm from "../util/util_wait_for_element";
 
+/**
+ * handleAddStep
+ * @param newSteps
+ */
 async function handleAddStep(this: TourGuideClient, newSteps: TourGuideStepType[]) {
+
+    // TS build strict check
+    if(!this.options.steps) return
 
     // Add step
     this.options.steps.push(...newSteps)
@@ -32,9 +40,9 @@ async function handleAddStep(this: TourGuideClient, newSteps: TourGuideStepType[
         await this.initListeners()
 
         // Add transition class to dialog after additional delay to prevent flying in from random position
-        if (this.options.dialogAnimate) setTimeout(() => {
-            this.dialog.classList.add('animate-position')
-        }, 600)
+        // if (this.options.dialogAnimate) setTimeout(() => {
+        //     this.dialog.classList.add('animate-position')
+        // }, 600)
 
         return true
     })

@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/tg-icon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Event Docs | TourGuide JS</title>
+    <title>Docs | TourGuide JS</title>
     <style type="text/css">
         main section{scroll-margin: 110px 0 30px;scroll-behavior: smooth;}
         .nav-group .sub-nav{
@@ -50,7 +50,7 @@
             <img src="../moon-icon.svg" width="12" height="12" alt="Dark icon" class="icon icon-dark"/>
           </span>
             </div><!-- end dark mode toggle -->
-            <a href="/docs.html" class="ml-3 sm:ml-6 xl:ml-9 inline-block text-indigo-600 dark:text-indigo-500 transition-all">Docs</a>
+            <a href="/docs/" class="ml-3 sm:ml-6 xl:ml-9 inline-block text-indigo-600 dark:text-indigo-500 transition-all">Docs</a>
             <a href="https://github.com" target="_blank" data-tg-order="2" data-tg-tour="This is also a great example of when to use the `fixed` options property" data-tg-fixed data-tg-group="nav" data-tg-title="Check out the GitHub for more information" class="ml-3 sm:ml-6 xl:ml-9 inline-block text-gray-500 hover:text-gray-900 dark:text-neutral-500 dark:hover:text-neutral-300 transition-all">Github</a>
             <a href="#" data-tg-tour="This is also a great example of when to use the `fixed` options property" data-tg-fixed data-tg-group="nav" class="ml-3 sm:ml-6 xl:ml-9 inline-block text-gray-500 hover:text-gray-900 dark:text-neutral-500 dark:hover:text-neutral-300 transition-all">Contribute</a>
         </nav>
@@ -61,15 +61,15 @@
 <div class="container grid grid-cols-12 gap-x-12">
     <aside class="col-span-3 border-r dark:border-neutral-800 pr-12 py-12">
         <nav class="sidenav sticky select-none" style="top: 118px;">
-            <div class="nav-group">
+            <div class="nav-group visible">
                 <div onclick="handleNavHeadingClick(this)" class="nav-group-heading flex items-center cursor-pointer rounded-md p-2 px-3 font-bold hover:bg-neutral-100 dark:hover:bg-zinc-800">
                     <h4 class="mr-auto">Usage</h4>
                     <img src="/chev-down.svg" width="10" height="6" class="mr-1 dark:invert angle-icon"/>
                 </div><!-- end nav heading -->
                 <div class="sub-nav pl-3">
-                    <a href="./#introduction" class="block p-2 rounded-md hover:bg-neutral-100 hover:text-neutral-700 dark:hover:bg-zinc-800 text-neutral-500 dark:hover:text-neutral-200">Intro</a>
-                    <a href="./#installation" class="block p-2 rounded-md hover:bg-neutral-100 hover:text-neutral-700 dark:hover:bg-zinc-800 text-neutral-500 dark:hover:text-neutral-200">Installation</a>
-                    <a href="./#create" class="block p-2 rounded-md hover:bg-neutral-100 hover:text-neutral-700 dark:hover:bg-zinc-800 text-neutral-500 dark:hover:text-neutral-200">Creating a tour</a>
+                    <a href="#introduction" class="block p-2 rounded-md hover:bg-neutral-100 hover:text-neutral-700 dark:hover:bg-zinc-800 text-neutral-500 dark:hover:text-neutral-200">Intro</a>
+                    <a href="#installation" class="block p-2 rounded-md hover:bg-neutral-100 hover:text-neutral-700 dark:hover:bg-zinc-800 text-neutral-500 dark:hover:text-neutral-200">Installation</a>
+                    <a href="#create" class="block p-2 rounded-md hover:bg-neutral-100 hover:text-neutral-700 dark:hover:bg-zinc-800 text-neutral-500 dark:hover:text-neutral-200">Creating a tour</a>
                 </div><!-- end sub nav -->
             </div><!-- end nav group -->
             <div class="nav-group">
@@ -120,17 +120,17 @@
                     <!--                    <a href="./options.html#option-steps" class="block p-2 rounded-md hover:bg-neutral-100 hover:text-neutral-700 dark:hover:bg-zinc-800 text-neutral-500 dark:hover:text-neutral-200">steps</a>-->
                 </div><!-- end sub nav -->
             </div><!-- end nav group -->
-            <div class="nav-group visible">
+            <div class="nav-group">
                 <div onclick="handleNavHeadingClick(this)" class="nav-group-heading flex items-center cursor-pointer rounded-md p-2 px-3 font-bold hover:bg-neutral-100 dark:hover:bg-zinc-800">
                     <h4 class="mr-auto">Events</h4>
                     <img src="/chev-down.svg" width="10" height="6" class="mr-1 dark:invert angle-icon"/>
                 </div><!-- end nav heading -->
                 <div class="sub-nav pl-3">
-                    <a href="#onfinish" class="block p-2 rounded-md hover:bg-neutral-100 hover:text-neutral-700 dark:hover:bg-zinc-800 text-neutral-500 dark:hover:text-neutral-200">onFinish()</a>
-                    <a href="#onbeforeexit" class="block p-2 rounded-md hover:bg-neutral-100 hover:text-neutral-700 dark:hover:bg-zinc-800 text-neutral-500 dark:hover:text-neutral-200">onBeforeExit()</a>
-                    <a href="#onafterexit" class="block p-2 rounded-md hover:bg-neutral-100 hover:text-neutral-700 dark:hover:bg-zinc-800 text-neutral-500 dark:hover:text-neutral-200">onAfterExit()</a>
-                    <a href="#onbeforestepchange" class="block p-2 rounded-md hover:bg-neutral-100 hover:text-neutral-700 dark:hover:bg-zinc-800 text-neutral-500 dark:hover:text-neutral-200">onBeforeStepChange()</a>
-                    <a href="#onafterstepchange" class="block p-2 rounded-md hover:bg-neutral-100 hover:text-neutral-700 dark:hover:bg-zinc-800 text-neutral-500 dark:hover:text-neutral-200">onAfterStepChange()</a>
+                    <a href="./events.html#onfinish" class="block p-2 rounded-md hover:bg-neutral-100 hover:text-neutral-700 dark:hover:bg-zinc-800 text-neutral-500 dark:hover:text-neutral-200">onFinish()</a>
+                    <a href="./events.html#onbeforeexit" class="block p-2 rounded-md hover:bg-neutral-100 hover:text-neutral-700 dark:hover:bg-zinc-800 text-neutral-500 dark:hover:text-neutral-200">onBeforeExit()</a>
+                    <a href="./events.html#onafterexit" class="block p-2 rounded-md hover:bg-neutral-100 hover:text-neutral-700 dark:hover:bg-zinc-800 text-neutral-500 dark:hover:text-neutral-200">onAfterExit()</a>
+                    <a href="./events.html#onbeforestepchange" class="block p-2 rounded-md hover:bg-neutral-100 hover:text-neutral-700 dark:hover:bg-zinc-800 text-neutral-500 dark:hover:text-neutral-200">onBeforeStepChange()</a>
+                    <a href="./events.html#onafterstepchange" class="block p-2 rounded-md hover:bg-neutral-100 hover:text-neutral-700 dark:hover:bg-zinc-800 text-neutral-500 dark:hover:text-neutral-200">onAfterStepChange()</a>
                 </div><!-- end sub nav -->
             </div><!-- end nav group -->
             <div class="nav-group">
@@ -170,146 +170,72 @@
     </aside><!-- end sidebar -->
     <main class="col-span-7 py-12">
         <h5 class="dark:text-white text-xl font-bold text-neutral-400 dark:text-neutral-500 block mb-4">Docs</h5>
-        <h1 class="dark:text-white text-2xl md:text-4xl xl:text-5xl font-bold mb-3 xl:mb-3">Events</h1>
-        <p class="md:text-lg xl:text-2xl font-light mb-12">Integrate your own behaviours when events occur.</p>
+        <h1 class="dark:text-white text-2xl md:text-4xl xl:text-5xl font-bold mb-3 xl:mb-3">Usage</h1>
+        <p class="md:text-lg xl:text-2xl font-light mb-12">Get started with creating a tour.</p>
 
-        <div class="heading flex items-center text-xl md-text-2xl xl:text-3xl group mb-6">
-            <h3 class="inline-block font-bold">Declaring events</h3>
-        </div><!-- end heading -->
-
-        <p class="mb-6">Event methods can optionally return a promise if you would like to explicitly accept and reject events. By default, event methods are handled asynchronously so blocking functions will be waited on before continuing.</p>
-
-        <code class="bg-neutral-100 mb-6 dark:bg-zinc-800/50 rounded-md text-neutral-700 dark:text-white p-3 block text-xs">
-            <span class="block opacity-50">const tg =  new TourGuideClient()</span>
-            </br>
-            <span class="block">tg.onFinish(async ()=>{</span>
-            <span class="block ml-3"><span class="opacity-50">// prevent showing alert if already finished tour</span></span>
-            <span class="block ml-3">if(!tg.isFinished()){</span>
-            <span class="block ml-6">alert('Tour complete, you are ready to use the application.')</span>
-            <span class="block ml-3">}</span>
-            <span class="block">})</span>
-            </br>
-            <span class="block opacity-50">tg.start()</span>
-        </code>
-
-        <section class="py-7" id="onfinish">
+        <section class="py-7" id="introduction">
             <div class="heading flex items-center text-xl md-text-2xl xl:text-3xl group mb-6">
-                <h3 class="font-bold flex items-center">onFinish()</h3>
-                <a href="#onfinish" class="cursor-pointer hover:text-indigo-500 hover:underline ml-2">#</a>
+                <h3 class="inline-block font-bold">Intro</h3>
+                <a href="#introduction" class="cursor-pointer hover:text-indigo-500 hover:underline ml-2">#</a>
             </div><!-- end heading -->
-            <p class="mb-2">Accepts a function to perform before finishing the tour.</p>
-            <p class="mb-6 italic opacity-75">Triggered by clicking the 'finish' button displayed on the last tour step.</p>
-            <code class="bg-neutral-100 dark:bg-zinc-800/50 rounded-md text-neutral-700 dark:text-white p-3 block text-xs">
-                <span class="block">tg.onFinish(()=>{</span>
-                <span class="block ml-3">return new Promise((resolve) => {</span>
-                <span class="block ml-6">if (confirm('Would you like to start the tour again?')) {</span>
-                <span class="block ml-9"><span class="opacity-50 text-xs">// use refreshDialog() instead of visitStep() to avoid re-triggering events</span></span>
-                <span class="block ml-9">tg.activeStep = 0</span>
-                <span class="block ml-9">tg.refreshDialog()</span>
-                <span class="block ml-6">} else {</span>
-                <span class="block ml-9">return resolve(true)</span>
-                <span class="block ml-6">}</span>
-                <span class="block ml-2">})</span>
-                <span class="block">})</span>
-            </code>
+            <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad alias aspernatur cum enim esse excepturi ipsa minima nam officiis perspiciatis placeat possimus quaerat quam quas quo recusandae rem, similique veniam!</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet exercitationem, harum illo magnam quam quisquam tempore! At aut corporis culpa esse excepturi inventore, ipsum odio placeat quae quibusdam, similique, velit?</p>
         </section>
-        <section class="py-7" id="onbeforeexit">
+        <section class="py-7" id="installation">
             <div class="heading flex items-center text-xl md-text-2xl xl:text-3xl group mb-6">
-                <h3 class="inline-block font-bold">onBeforeExit()</h3>
-                <a href="#onbeforeexit" class="cursor-pointer hover:text-indigo-500 hover:underline ml-2">#</a>
+                <h3 class="inline-block font-bold">Installation</h3>
+                <a href="#installation" class="cursor-pointer hover:text-indigo-500 hover:underline ml-2">#</a>
             </div><!-- end heading -->
-            <p class="mb-2">Accepts a function to perform before a user exits the tour.</p>
-            <p class="mb-6 italic opacity-75">Triggered by clicking outside dialog, escape key or close button.</p>
-
-            <code class="bg-neutral-100 dark:bg-zinc-800/50 rounded-md text-neutral-700 dark:text-white p-3 block text-xs">
-                <span class="block">tg.onBeforeExit(()=>{</span>
-                <span class="block ml-3">return new Promise((resolve, reject) => {</span>
-                <span class="block ml-6">if (confirm('Are you sure you want to close the tour?')) {</span>
-                <span class="block ml-9">return resolve(true)</span>
-                <span class="block ml-6">} else {</span>
-                <span class="block ml-9">return reject()</span>
-                <span class="block ml-6">}</span>
-                <span class="block ml-2">})</span>
-                <span class="block">})</span>
+            <p class="mb-3">The TourGuide JS library can be installed via NPM or CDN. Both provide the same level of functionality but may differ in IDE integration.</p>
+            <p class="mb-12">For better IDE integration NPM installation is recommended.</p>
+            <p class="block mb-2">NPM</p>
+            <code class="bg-neutral-100 dark:bg-zinc-800/50 rounded-md text-neutral-700 dark:text-white p-3 block text-xs mb-6">
+                <span class="pointer-events-none select-none opacity-50">$ </span>
+                <span>npm i tourguide-js</span>
             </code>
+            <p class="block mb-2">CDN</p>
+            <code class="bg-neutral-100 dark:bg-zinc-800/50 rounded-md text-neutral-700 dark:text-white p-3 block text-xs">&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/tourguide/dist/tourguide.js" crossorigin="anonymous" referrerpolicy="no-referrer"&gt;&lt;/script&gt;</code>
         </section>
-        <section class="py-7" id="onafterexit">
+        <section class="pt-7 pb-12" id="create">
             <div class="heading flex items-center text-xl md-text-2xl xl:text-3xl group mb-6">
-                <h3 class="inline-block font-bold">onAfterExit()</h3>
-                <a href="#onafterexit" class="cursor-pointer hover:text-indigo-500 hover:underline ml-2">#</a>
+                <h3 class="inline-block font-bold">Creating a tour</h3>
+                <a href="#create" class="cursor-pointer hover:text-indigo-500 hover:underline ml-2">#</a>
             </div><!-- end heading -->
-            <p class="mb-2">Accepts a function to perform after the tour has been exited.</p>
-            <p class="mb-6 italic opacity-75 text-xs">*Accepts but does not handle a promise based function as there is no more user interaction with the tour until re-started.</p>
+            <p class="text-neutral-500 mb-3">To create a tour, you must create a tour instance.</p>
 
-            <code class="bg-neutral-100 dark:bg-zinc-800/50 rounded-md text-neutral-700 dark:text-white p-3 block text-xs">
-                <span class="block">tg.onAfterExit(()=>{</span>
-                <span class="block ml-3">console.info("The tour has closed")</span>
-                <span class="block">})</span>
+            <code class="bg-neutral-100 dark:bg-zinc-800/50 rounded-md text-neutral-700 dark:text-white p-3 block text-xs mb-6">
+                <span>const tg = new TourGuideClient(options? : TourGuideOptions, steps? : TourGuideStep[])</span>
+                <!--                <p class="my-5 uppercase opacity-50 bold select-none">&#45;&#45; or &#45;&#45;</p>-->
+                <!--                <span>const tg = TourGuide(options? : TourGuideOptions, steps? : TourGuideStep[])</span>-->
             </code>
-        </section>
-        <section class="py-7" id="onbeforestepchange">
-            <div class="heading flex items-center text-xl md-text-2xl xl:text-3xl group mb-6">
-                <h3 class="inline-block font-bold">onBeforeStepChange()</h3>
-                <a href="#onbeforestepchange" class="cursor-pointer hover:text-indigo-500 hover:underline ml-2">#</a>
-            </div><!-- end heading -->
-            <p class="mb-6">Accepts a function to perform before a user changes tour step.</p>
 
-            <code class="bg-neutral-100 dark:bg-zinc-800/50 rounded-md text-neutral-700 dark:text-white p-3 block text-xs">
-                <span class="block">tg.onBeforeStepChange(()=>{</span>
-                <span class="block ml-3">return new Promise((resolve, reject) => {</span>
-                <span class="block ml-6">if (confirm('Change tour step?')) {</span>
-                <span class="block ml-9">return resolve(true)</span>
-                <span class="block ml-6">} else {</span>
-                <span class="block ml-9">return reject()</span>
-                <span class="block ml-6">}</span>
-                <span class="block ml-2">})</span>
-                <span class="block">})</span>
-            </code>
-        </section>
-        <section class="py-7 pb-12" id="onafterstepchange">
-            <div class="heading flex items-center text-xl md-text-2xl xl:text-3xl group mb-6">
-                <h3 class="inline-block font-bold">onAfterStepChange()</h3>
-                <a href="#onafterstepchange" class="cursor-pointer hover:text-indigo-500 hover:underline ml-2">#</a>
-            </div><!-- end heading -->
-            <p class="mb-6">Accepts a function to perform after a user changes tour step.</p>
 
-            <code class="bg-neutral-100 dark:bg-zinc-800/50 rounded-md text-neutral-700 dark:text-white p-3 block text-xs">
-                <span class="block">tg.onAfterStepChange(()=>{</span>
-                <span class="block ml-3">console.info("step change complete")</span>
-                <span class="block">})</span>
-            </code>
+            <ul class="list-disc pl-4 mb-6 opacity-75">
+                <li class="py-1">If no options are passed, default values are used.</li>
+                <li class="py-1">If no steps are provided, you can use addSteps() at a later stage or rely on the data attribute method of declaring tour steps.</li>
+            </ul>
+
+            <!--            <p class="text-neutral-500 mb-3">Add the [data-tg-tour] attribute to elements that you want to include in your tour. This attribute should contain the relevant text for the tour guide step.</p>-->
+            <!--            <p class="text-neutral-500 mb-3">Additionally you can define tour steps in TourGuideStep[] format. <a href="#steps-array" class="underline hover:text-indigo-500 hover-pointer">Read more about tour guide steps.</a></p>-->
         </section>
 
-        <section class="pt-12 pb-6 border-t dark:border-neutral-800 flex items-center justify-between">
 
-            <div class="next-wrapper">
-                <p class="mb-2 text-xs opacity-50">Back</p>
-                <a href="/docs/options.html" class="mb-3 inline-flex group items-center rounded-md p-2 px-3 xl:px-5 xl:py-3 border dark:border-neutral-800 cursor-pointer bg-gradient-to-b from-white to-neutral-50 dark:from-zinc-800/50 dark:to-zinc-800 hover:border-neutral-300 hover:shadow-sm">
-                    <span class="link-icon-svg inline-block group-hover:opacity-100 rotate-180">
-                        <svg width="18px" height="15px" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" class="ml-1 dark:invert">
-                            <rect width="48" height="48" fill="white" fill-opacity="0.01"/>
-                            <path d="M41.9999 24H5.99992" stroke="black" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M30 12L42 24L30 36" stroke="black" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </span><!-- end arrow icon -->
-                    <span class="group-hover:opacity-100 inline-block">Options</span>
-                </a>
-            </div>
-            <div class="next-wrapper text-right">
-                <p class="mb-2 text-xs opacity-50">Next</p>
-                <a href="/docs/methods.html" class="mb-3 inline-flex group items-center rounded-md p-2 px-3 xl:px-5 xl:py-3 border dark:border-neutral-800 cursor-pointer bg-gradient-to-b from-white to-neutral-50 dark:from-zinc-800/50 dark:to-zinc-800 hover:border-neutral-300 hover:shadow-sm">
-                    <span class="group-hover:opacity-100 inline-block">Methods</span>
-                    <span class="link-icon-svg inline-block group-hover:opacity-100">
-                        <svg width="18px" height="15px" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" class="ml-1 dark:invert">
-                            <rect width="48" height="48" fill="white" fill-opacity="0.01"/>
-                            <path d="M41.9999 24H5.99992" stroke="black" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M30 12L42 24L30 36" stroke="black" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </span><!-- end arrow icon -->
-                </a>
-            </div><!-- end next wrapper -->
+        <section class="pt-12 pb-6 border-t dark:border-neutral-800 text-right">
 
-        </section><!-- end nav -->
+            <p class="mb-2 text-xs opacity-50">Next</p>
+            <a href="/docs/steps.html" class="mb-3 inline-flex group items-center rounded-md p-2 px-3 xl:px-5 xl:py-3 border dark:border-neutral-800 cursor-pointer bg-gradient-to-b from-white to-neutral-50 dark:from-zinc-800/50 dark:to-zinc-800 hover:border-neutral-300 hover:shadow-sm">
+                <span class="group-hover:opacity-100 inline-block">Tour steps</span>
+                <span class="link-icon-svg inline-block group-hover:opacity-100">
+                    <svg width="18px" height="15px" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" class="ml-1 dark:invert">
+                    <rect width="48" height="48" fill="white" fill-opacity="0.01"/>
+                    <path d="M41.9999 24H5.99992" stroke="black" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M30 12L42 24L30 36" stroke="black" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </span>
+            </a>
+
+        </section>
+
 
     </main><!-- end main -->
 </div><!-- end container -->

@@ -1,14 +1,235 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/tg-icon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TourGuide JS</title>
-<!--    <link rel="stylesheet" href="../dist/css/site.css"/>-->
+  </head>
+  <body class="dark:bg-zinc-900 dark:text-white">
+<!--    <div id="app">-->
+<!--    </div>&lt;!&ndash; end app &ndash;&gt;-->
 
-</head>
-<body>
-    <script src="../dist/js/site.js"></script>
-</body>
+  <header class="primary sticky top-0 py-3 lg:py-4 block z-20 bg-white/90 dark:bg-zinc-900/90 backdrop-blur-sm border-b dark:border-zinc-800">
+    <div class="container flex items-center">
+      <a href="/" class="flex items-center">
+        <img src="/tg-logo.svg" width="90" height="90" class="app-icon w-6 md:w-9" alt="TourGuide Icon" />
+        <span class="ml-2 md:ml-3 font-bold" style="font-size: 16px;">TourGuide JS</span>
+      </a>
+
+      <nav class="inline-flex ml-auto items-center">
+        <div class="darkModeToggle">
+          <input type="checkbox" value="1"/>
+          <span class="active-state trans">
+            <img src="./sun-icon.svg" width="14" height="14" alt="Light icon" class="icon icon-light"/>
+            <img src="./moon-icon.svg" width="12" height="12" alt="Dark icon" class="icon icon-dark"/>
+          </span>
+        </div><!-- end dark mode toggle -->
+        <a href="/docs/" class="ml-3 sm:ml-6 xl:ml-9 inline-block text-gray-500 hover:text-gray-900 dark:text-neutral-500 dark:hover:text-neutral-300 transition-all">Docs</a>
+        <a href="https://github.com" target="_blank" data-tg-order="2" data-tg-tour="This is a fixed tour guide step" data-tg-fixed data-tg-group="nav" data-tg-title="Check out the GitHub for more information" class="ml-3 sm:ml-6 xl:ml-9 inline-block text-gray-500 hover:text-gray-900 dark:text-neutral-500 dark:hover:text-neutral-300 transition-all">Github</a>
+        <a href="#" data-tg-tour="Not a fixed step" data-tg-fixed data-tg-group="nav" class="ml-3 sm:ml-6 xl:ml-9 inline-block text-gray-500 hover:text-gray-900 dark:text-neutral-500 dark:hover:text-neutral-300 transition-all">Contribute</a>
+      </nav>
+
+    </div><!-- end container -->
+  </header>
+
+  <section id="hero" class="dark:bg-gradient-to-b from-zinc-800/25 to-zinc-900 dark:bg-zinc-900 p-4 pt-12 md:py-20 lg:pb-24 lg:pt-28 flex items-center content-between">
+    <div class="container text-center max-w-3xl">
+
+      <img src="/tg-logo.svg" class="logo w-12 md:w-24 mx-auto block mb-7" alt="TourGuide JS logo" />
+
+      <h1 class="text-2xl md:text-4xl xl:text-5xl font-bold mb-3 xl:mb-5">Intuitive and customisable tours for user application onboarding</h1>
+      <p class="text-gray-600 dark:text-neutral-500 md:text-lg xl:text-2xl font-light xl:px-9">TourGuide is a Javascript library written for creating user tours and on-boarding steps for your apps.</p>
+
+      <div class="d-flex mt-12 mb-12">
+        <button id="tourTrigger" class="inline-flex rounded-md cursor-pointer focus:hover:shadow-md text-white font-medium p-4 px-5 shadow-md hover:shadow-xl bg-gradient-to-r from-indigo-500 to-indigo-600 hover:from-indigo-500 hover:to-indigo-500 transition-all duration-700 ease-in-out mx-3">Start tour</button>
+        <button data-tg-order="1" data-tg-tour='Hello step one! 🦄' data-tg-title="Welcome to Tourguide JS" class="inline-flex rounded-md cursor-pointer focus:hover:shadow-md text-white font-medium p-4 px-5 shadow-md hover:shadow-xl bg-gradient-to-r from-slate-600 to-slate-700 hover:from-slate-500 hover:to-slate-600 transition-all duration-700 ease-in-out mx-3">Get started</button>
+      </div><!-- end btn flex wrapper -->
+
+    </div><!-- end container -->
+  </section><!-- end hero -->
+
+  <div class="container max-w-4xl" id="counter"></div>
+
+  <section id="features" class="py-12">
+    <div class="container max-w-6xl">
+      <h2 class="text-center block text-4xl font-bold mb-12">Features</h2>
+      <div class="grid grid-cols-3 gap-10">
+        <div class="card rounded-lg p-12 border border-slate-200 dark:border-zinc-800 dark:hover:border-zinc-700 shadow-sm hover:shadow-md trans group cursor-default">
+          <h3 class="block mb-3 font-bold text-lg group-hover:text-indigo-500 dark:group-hover:text-indigo-400 trans">Rich API</h3>
+          <p class="text-neutral-600 group-hover:text-neutral-400 trans">TourGuide JS has a range of promise driven methods and callbacks to provide an enjoyable developer experience.</p>
+        </div><!-- end card -->
+        <div class="card rounded-lg p-12 border border-slate-200 dark:border-zinc-800 dark:hover:border-zinc-700 shadow-sm hover:shadow-md trans group cursor-default">
+          <h3 class="block mb-3 font-bold text-lg group-hover:text-indigo-500 dark:group-hover:text-indigo-400 trans">Framework agnostic</h3>
+          <p class="text-neutral-500 group-hover:text-neutral-400 trans">Written entirely in vanilla JS with TypeScript and usable in virtually any framework. Choose from CDN or NPM installation.</p>
+        </div><!-- end card -->
+        <div class="card rounded-lg p-12 border border-slate-200 dark:border-zinc-800 dark:hover:border-zinc-700 shadow-sm hover:shadow-md trans group cursor-default">
+          <h3 class="block mb-3 font-bold text-lg group-hover:text-indigo-500 dark:group-hover:text-indigo-400 trans">Typescript support</h3>
+          <p class="text-neutral-500 group-hover:text-neutral-400 trans">Type definitions help automatically detect available options in your IDE as well as ensure a type safe package for your projects.</p>
+        </div><!-- end card -->
+        <div class="card rounded-lg p-12 border border-slate-200 dark:border-zinc-800 dark:hover:border-zinc-700 shadow-sm hover:shadow-md trans group cursor-default">
+          <h3 class="block mb-3 font-bold text-lg group-hover:text-indigo-500 dark:group-hover:text-indigo-400 trans">Lightweight</h3>
+          <p class="text-neutral-500 group-hover:text-neutral-400 trans">Weighing in at just 14kb minified built with webpack, TourGuide JS has a minimal footprint on your bundle size.</p>
+        </div><!-- end card -->
+        <div class="card rounded-lg p-12 border border-slate-200 dark:border-zinc-800 dark:hover:border-zinc-700 shadow-sm hover:shadow-md trans group cursor-default">
+          <h3 class="block mb-3 font-bold text-lg group-hover:text-indigo-500 dark:group-hover:text-indigo-400 trans">Customizable</h3>
+          <p class="text-neutral-500 group-hover:text-neutral-400 trans">Define an array of options to create the perfect onboarding experience for your visitors, you can even use custom HTML in your tour content.</p>
+        </div><!-- end card -->
+        <div class="card rounded-lg p-12 border border-slate-200 dark:border-zinc-800 dark:hover:border-zinc-700 shadow-sm hover:shadow-md trans group cursor-default">
+          <h3 class="block mb-3 font-bold text-lg group-hover:text-indigo-500 dark:group-hover:text-indigo-400 trans">Open source</h3>
+          <p class="text-neutral-500 group-hover:text-neutral-400 trans">TourGuide JS is in early stages of development and contribution is welcome. Open license for both commercial and personal use.</p>
+        </div><!-- end card -->
+      </div><!-- end grid wrapper -->
+    </div><!-- end container -->
+  </section><!-- end features -->
+
+  <section id="guide" class="py-12">
+    <div class="container max-w-6xl">
+      <h2 class="text-center block text-4xl font-bold mb-12 block">Get started</h2>
+
+        <div data-tg-order="4" data-tg-tour='Choose from a selection of installation methods'>
+          <h3 class="font-bold text-2xl mb-6 block">Installation</h3>
+          <div class="grid grid-cols-12 gap-x-8">
+            <aside class="col-span-5">
+              <p class="text-neutral-500 mb-3">Installing TourGuide JS can be done through npm or CDN.</p>
+              <p class="text-neutral-500">NPM is recommended for build performance.</p>
+            </aside>
+            <div class="col-span-7">
+              <p class="block mb-2">NPM</p>
+              <code class="bg-neutral-100 dark:bg-zinc-800/50 rounded-md text-neutral-700 dark:text-white p-3 block text-xs mb-6">
+                <span class="pointer-events-none select-none opacity-50">$ </span>
+                <span>npm i tourguide-js</span>
+              </code>
+              <p class="block mb-2">CDN</p>
+              <code class="bg-neutral-100 dark:bg-zinc-800/50 rounded-md text-neutral-700 dark:text-white p-3 block text-xs">&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/tourguide/dist/tourguide.js" crossorigin="anonymous" referrerpolicy="no-referrer"&gt;&lt;/script&gt;</code>
+            </div>
+          </div><!-- end flex wrapper -->
+        </div><!-- end guide step -->
+
+        <hr class="border-dashed border-0 border-t-2 my-12 border-slate-200 dark:border-neutral-800"/>
+
+      <div data-tg-order="4" data-tg-tour='Choose from a selection of installation methods'>
+        <h3 class="font-bold text-2xl mb-6 block">Usage</h3>
+        <div class="grid grid-cols-12 gap-x-8">
+          <aside class="col-span-5">
+            <p class="text-neutral-500 mb-3">Creating a tour is simple and takes only a few steps to get started.</p>
+            <p class="text-neutral-500 mb-3">Add the [data-tg-tour] attribute to elements that you want to include in your tour. This attribute should contain the relevant text for the tour guide step.</p>
+            <p class="text-neutral-500 mb-3">Additionally you can define tour steps in TourGuideStep[] format.</p>
+            <p class="text-neutral-500">For more about declaring tour steps <a href="#" class="text-indigo-600 hover:text-indigo-500 hover:underline"> read the docs.</a></p>
+          </aside>
+          <div class="col-span-7">
+            <p class="block mb-2">Include</p>
+            <code class="bg-neutral-100 dark:bg-zinc-800/50 rounded-md text-neutral-700 dark:text-white p-3 block items-center text-xs mb-1">
+              <span class="block">import "@tourguidejs/src/scss/tour" <span class="opacity-50 ml-20" style="font-size: 12px;">// Styles</span></span>
+              <span class="block">import TourGuide from "@tourguidejs/src/Tour" <span class="opacity-50 ml-2" style="font-size: 12px;">// JS</span></span>
+<!--              <span class="opacity-50 ml-auto select-none pointer-events-none" style="font-size: 11px;">NPM ONLY</span>-->
+            </code>
+            <span class="opacity-50 block mb-6" style="font-size: 12px;">// NPM only - skip for CDN installation</span>
+            <p class="block mb-2">Declare steps (data attribute method)</p>
+            <code class="bg-neutral-100 dark:bg-zinc-800/50 rounded-md text-neutral-700 dark:text-white p-3 block text-xs mb-1">
+              <span>&lt;div data-tg-tour="My first tour"&gt; ... &lt;/div&gt;</span>
+            </code>
+            <span class="opacity-50 block mb-6" style="font-size: 12px;">// Additional attributes can be added to elements.</span>
+            <p class="block mb-2">Initialization</p>
+            <code class="bg-neutral-100 dark:bg-zinc-800/50 rounded-md text-neutral-700 dark:text-white p-3 block text-xs mb-1">
+              <span>const tg = TourGuide(options : TourGuideOptions, steps : TourGuideStep[])</span>
+            </code>
+            <span class="opacity-50 block mb-6" style="font-size: 12px;">// Optionally pass options and define steps in object form</span>
+            <p class="block mb-2">Start</p>
+            <code class="bg-neutral-100 dark:bg-zinc-800/50 rounded-md text-neutral-700 dark:text-white p-3 block text-xs mb-1">
+              <span>tg.start(group? : string)</span>
+            </code>
+            <span class="opacity-50" style="font-size: 12px;">// Optionally pass 'group' to only include steps with matching [data-tg-group='&lt;group_name&gt;']</span>
+          </div>
+        </div><!-- end flex wrapper -->
+      </div><!-- end guide step -->
+
+        <hr class="border-dashed border-0 border-t-2 my-12 border-slate-200 dark:border-neutral-800"/>
+
+      <div data-tg-order="4" data-tg-tour='Choose from a selection of installation methods'>
+        <h3 class="font-bold text-2xl mb-6 block">Customization</h3>
+        <div class="grid grid-cols-12 gap-x-8">
+          <aside class="col-span-5">
+            <p class="text-neutral-500 mb-3">Tailor the tour using a range of options, either set options on initialization or update them on command with the setOptions() method.</p>
+            <p class="text-neutral-500 mb-3">All options are optional and defaults will be used in place of custom values.</p>
+            <p class="text-neutral-500 mb-9">Use the TourStep type definition to automatically detect available options in your IDE.</p>
+
+            <p class="block mb-2">Set options on initialization</p>
+            <code class="bg-neutral-100 dark:bg-zinc-800/50 rounded-md text-neutral-700 dark:text-white p-3 block text-xs mb-6">
+              <span>const tg = TourGuide({debug:false})</span>
+            </code>
+            <p class="block mb-2">Set options programmatically</p>
+            <code class="bg-neutral-100 dark:bg-zinc-800/50 rounded-md text-neutral-700 dark:text-white p-3 block text-xs mb-1">
+              <span>tg.setOptions({backdropColor: rgba(0,0,0,.8)})</span>
+            </code>
+            <span class="opacity-50" style="font-size: 12px;">// on setOptions, dialog and backdrop are recomputed.</span>
+          </aside>
+          <div class="col-span-7">
+            <div class="bg-neutral-100 dark:bg-zinc-800/50 rounded-md overflow-hidden text-neutral-700 dark:text-white block items-center text-xs mb-6">
+              <div class="bg-neutral-200 dark:bg-zinc-800/50 p-3 py-4">Available options</div>
+              <code class="p-3 block">
+                <span>{</span>
+                <span class="block pl-4" style="white-space: nowrap;overflow: scroll;">
+                  autoScroll: boolean = true<span class="opacity-50" style="font-size: 11px">// auto scroll to elements</span><br>
+                  autoScrollSmooth: boolean = true <span class="opacity-50" style="font-size: 11px">// auto scroll smooth</span><br>
+                  autoScrollOffset: number = 20<span class="opacity-50" style="font-size: 11px">// Offset from edge for smooth scroll</span><br>
+                  backdropClass: string = ""<span class="opacity-50" style="font-size: 11px">// additional css class for tour backdrop</span><br>
+                  backdropColor: string = "rgba(20,20,21,0.84)"<span class="opacity-50" style="font-size: 11px">// RGBA support only</span><br>
+                  targetPadding: number = 30<span class="opacity-50" style="font-size: 11px">// space around highlighted target in px</span><br>
+                  backdropAnimate: boolean = true<span class="opacity-50" style="font-size: 11px">// animate backdrop position & size</span><br>
+                  dialogClass: string = ""<span class="opacity-50" style="font-size: 11px">// additional css class for tour dialog</span><br>
+                  dialogZ: number = 999<span class="opacity-50" style="font-size: 11px">// z-index of dialog</span><br>
+                  dialogWidth: number = 0<span class="opacity-50" style="font-size: 11px">// width style property for dialog - recommended if loading images into content</span><br>
+                  dialogMaxWidth: number = 340<span class="opacity-50" style="font-size: 11px">// max-width style property for dialog</span><br>
+                  dialogAnimate: boolean = true<span class="opacity-50" style="font-size: 11px">// Animate dialog position & size</span><br>
+                  closeButton: boolean = true<span class="opacity-50" style="font-size: 11px">// show close button</span><br>
+                  nextLabel: string =  "Next"<span class="opacity-50" style="font-size: 11px">// text for next button</span><br>
+                  prevLabel: string =  "Back"<span class="opacity-50" style="font-size: 11px">// text for prev button</span><br>
+                  finishLabel: string = "Finish"<span class="opacity-50" style="font-size: 11px">// text for finish button</span><br>
+                  hidePrev: boolean = false<span class="opacity-50" style="font-size: 11px">// hide prev button</span><br>
+                  hideNext: boolean = false<span class="opacity-50" style="font-size: 11px">// hide next button</span><br>
+                  completeOnFinish: boolean = true<span class="opacity-50" style="font-size: 11px">// Set tour as finished in localStorage on finish</span><br>
+                  showStepDots: boolean = true<span class="opacity-50" style="font-size: 11px">// show the dots tour progress</span><br>
+                  stepDotsPlacement: 'footer' | 'body' = "footer"<span class="opacity-50" style="font-size: 11px">// show dots in dialog body/footer</span><br>
+                  showButtons: boolean = true<span class="opacity-50" style="font-size: 11px">// show next/prev buttons</span><br>
+                  showStepProgress: boolean = true<span class="opacity-50" style="font-size: 11px">// show `1/5` human-readable step progress</span><br>
+                  keyboardControls: boolean =false<span class="opacity-50" style="font-size: 11px">// show next & prev arrows keys + esc key</span><br>
+                  exitOnEscape: boolean = true<span class="opacity-50" style="font-size: 11px">// Close the tour on escape key</span><br>
+                  exitOnClickOutside: boolean = true<span class="opacity-50" style="font-size: 11px">// Close the tour on backdrop click</span><br>
+                  rememberStep: boolean = true<span class="opacity-50" style="font-size: 11px">// open tour on last active step</span><br>
+                  debug: boolean = false<span class="opacity-50" style="font-size: 11px">// show console logging</span><br>
+                  steps: TourGuideStep[]<span class="opacity-50" style="font-size: 11px">// pre-define the tour steps</span><br>
+                </span>
+                <span>}</span>
+              </code>
+            </div><!-- end options wrapper -->
+          </div><!-- end col -->
+        </div><!-- end flex wrapper -->
+      </div><!-- end guide step -->
+
+
+        <a href="/docs.html">
+          <button class="block mx-auto p-4 px-7 rounded-md border-2 mt-24 font-bold border-neutral-200 dark:border-neutral-600 hover:border-indigo-200 dark:hover:border-indigo-600 hover:bg-indigo-50 dark:hover:bg-indigo-600 hover:text-indigo-600 dark:hover:text-white text-neutral-500 transition-all">View full documentation</button>
+        </a>
+
+    </div><!-- end container -->
+  </section><!-- end guide -->
+
+  <footer class="text-neutral-500 dark:bg-transparent border-t dark:border-zinc-800 dark:text-neutral-500 py-9 mt-12">
+    <div class="container max-w-6xl text-center">
+      <span class="block" id="tt">Made with <span style="color: #e25555;">&#9829;</span>️ by Jack Callow</span>
+      <div class="block pt-7 text-center">
+        <div class="darkModeToggle">
+          <input type="checkbox" value="1"/>
+          <span class="active-state trans">
+            <img src="./sun-icon.svg" width="14" height="14" alt="Light icon" class="icon icon-light"/>
+            <img src="./moon-icon.svg" width="12" height="12" alt="Dark icon" class="icon icon-dark"/>
+          </span>
+        </div><!-- end dark mode toggle -->
+      </div>
+    </div><!-- end container -->
+  </footer>
+
+  <script type="module" src="/src/main.ts"></script>
+  </body>
 </html>

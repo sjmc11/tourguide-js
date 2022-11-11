@@ -24,7 +24,9 @@ async function handleSetOptions(this: TourGuideClient, options: TourGuideOptions
      * Dialog
      */
     // Re-render the dialog - this reflects any changes from options
-    this.dialog.innerHTML = await renderDialogHtml(this).catch((e)=>{
+    await renderDialogHtml(this).then((htmlResp)=>{
+        if(htmlResp) this.dialog.innerHTML = htmlResp
+    }).catch((e)=>{
         if(this.options.debug) console.warn(e)
     })
 
@@ -45,9 +47,9 @@ async function handleSetOptions(this: TourGuideClient, options: TourGuideOptions
         await this.initListeners()
 
         // Add transition class to dialog after additional delay to prevent flying in from random position
-        if (this.options.dialogAnimate) setTimeout(() => {
-            this.dialog.classList.add('animate-position')
-        }, 600)
+        // if (this.options.dialogAnimate) setTimeout(() => {
+        //     this.dialog.classList.add('animate-position')
+        // }, 600)
 
         return true
     })

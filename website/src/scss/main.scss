@@ -1,0 +1,175 @@
+// FadeIn transition
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.fadeIn {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+  animation-duration: 300ms;
+  -webkit-animation-duration: 300ms;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+// FadeInDown transition
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fadeInDown {
+  -webkit-animation-name: fadeInDown;
+  animation-name: fadeInDown;
+  animation-duration: 300ms;
+  -webkit-animation-duration: 300ms;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+/**
+Website styles
+ */
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body{
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system , BlinkMacSystemFont , "Segoe UI" , "Roboto" , "Helvetica Neue" , "Ubuntu" , sans-serif;
+  font-weight: 500;
+  color: #2d2d2d;
+  background: #fff;
+  font-size: 14px;
+  line-height: 1.5em;
+  -webkit-font-smoothing: antialiased;
+}
+
+.trans{
+  -webkit-transition: all .3s;
+  -moz-transition: all .3s;
+  transition: all .3s;
+}
+.trans.fast{
+  -webkit-transition: all .1s;
+  -moz-transition: all .1s;
+  transition: all .1s;
+}
+
+section#hero{
+  min-height: 200px;
+}
+
+/**
+Custom dark mode toggle from checkbox input
+ */
+$togglePadding: 4px;
+$toggleWidth: 50px;
+$toggleHeight: 28px;
+.darkModeToggle{
+  background: transparent;
+  display: inline-block;
+  box-shadow: 0 0 1px rgba(33,33,33,0.6);
+  height: $toggleHeight;
+  width: $toggleWidth;
+  border-radius: $toggleHeight;
+  position: relative;
+  cursor: pointer;
+  &:has(> input:checked) {
+    background: rgba(18, 17, 26, 0.4);
+    box-shadow: 0 0 1px rgba(255,255,255,0.6);
+    .active-state{
+      background: #414365;
+    }
+  }
+  input{
+    position: absolute;
+    width: 0;
+    height: 0;
+    &:checked + .active-state{
+      left: calc(100% - #{$toggleHeight - $togglePadding});
+      background: #414365;
+      .icon-light{display: none}
+      .icon-dark{display: inline-block;}
+    }
+  }
+  .active-state{
+    position: absolute;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    width: #{$toggleHeight - ($togglePadding * 2)};
+    height: #{$toggleHeight - ($togglePadding * 2)};
+    top: #{$togglePadding};
+    left: #{$togglePadding};
+    border-radius: 50%;
+    background: #e4e5ec;
+    .icon-light{display: inline-block;}
+    .icon-dark{display: none;filter: invert(.92) hue-rotate(180deg);}
+  }
+}
+
+/**
+Tour trigger animation example
+ */
+.pulse-animated {
+  box-shadow: 0 0 0 rgba(204,169,44, 0.4);
+  animation: pulse 2s infinite;
+}
+.pulse:hover {
+  animation: none;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(239, 190, 20, 0.64);
+  }
+  70% {
+    box-shadow: 0 0 0 12px rgba(239, 190, 20, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(239, 190, 20, 0);
+  }
+}
+
+
+/**
+Docs heading scroll to animation
+ */
+.scroll-attention-grab {
+  box-shadow: 0 0 0 rgba(204,169,44, 0.4);
+  animation: textAttentionGrab 1s ease-in-out;
+}
+//.scroll-attention-grab:hover {
+//  animation: none;
+//}
+
+@keyframes textAttentionGrab {
+  0% {
+    color: rgba(255, 223, 118, 0.93);
+    box-shadow: 0 0 0 0 rgba(239, 190, 20, 0.64);
+  }
+  70% {
+    box-shadow: 0 0 0 9px rgba(239, 190, 20, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(239, 190, 20, 0);
+  }
+}
