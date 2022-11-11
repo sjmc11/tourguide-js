@@ -1,0 +1,26 @@
+$popperPadding: 15px;
+
+.tg-backdrop{
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  z-index: 22;
+  .tg-popper{
+    .tg-popper-title{
+      padding: $popperPadding;
+    }
+    .tg-popper-body{
+      padding: $popperPadding;
+    }
+    .tg-popper-footer{
+      padding: $popperPadding;
+      display: flex;
+      align-items: center;
+      button.tg-popper-btn{
+        & + button{
+          margin-left: auto;
+        }
+      }
+    }
+  }
+}

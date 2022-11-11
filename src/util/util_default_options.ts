@@ -1,0 +1,33 @@
+const defaultOptions = {
+    nextLabel: "Next",
+    prevLabel: "Back",
+    finishLabel: "Finish",
+    hidePrev: false,
+    hideNext: false,
+    dialogClass: "",
+    dialogZ: 999,
+    dialogWidth: 0,
+    dialogMaxWidth: 340,
+    dialogAnimate: true,
+    backdropClass: "",
+    backdropColor: "rgba(20,20,21,0.84)",
+    backdropAnimate: true,
+    targetPadding: 30,
+    completeOnFinish: true,
+    showStepDots: true,
+    stepDotsPlacement: "footer",
+    showButtons: true,
+    showStepProgress: true,
+    keyboardControls: false,
+    exitOnEscape: true,
+    exitOnClickOutside: true,
+    autoScroll: true,
+    autoScrollSmooth: true,
+    autoScrollOffset: 20,
+    closeButton: true,
+    rememberStep: true,
+    debug: false,
+    steps: []
+}
+
+export default defaultOptions
