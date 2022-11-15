@@ -1,4 +1,5 @@
-import {TourGuideClient, TourGuideStepType} from "../Tour";
+import {TourGuideClient} from "../Tour";
+import {TourGuideStep} from "../types/TourGuideStep";
 import computeTourSteps from "../core/steps";
 import {updateDialogHtml} from "../core/dialog";
 import waitForElm from "../util/util_wait_for_element";
@@ -7,7 +8,7 @@ import waitForElm from "../util/util_wait_for_element";
  * handleAddStep
  * @param newSteps
  */
-async function handleAddStep(this: TourGuideClient, newSteps: TourGuideStepType[]) {
+async function handleAddStep(this: TourGuideClient, newSteps: TourGuideStep[]) {
 
     // TS build strict check
     if(!this.options.steps) return

@@ -9,6 +9,16 @@
  *
  */
 
+// CORE
+import TourGuideOptions from "./core/options";
+import {createTourGuideDialog} from "./core/dialog";
+import computeTourPositions from "./core/positioning";
+import {computeBackdropAttributes, createTourGuideBackdrop} from "./core/backdrop";
+import {handleOnAfterExit, handleOnAfterStepChange, handleOnBeforeExit, handleOnBeforeStepChange, handleOnFinish} from "./core/callbacks";
+import {clickOutsideHandler, handleDestroyListeners, handleInitListeners, keyPressHandler} from "./core/listeners";
+// Step Type
+import {TourGuideStep} from "./types/TourGuideStep";
+// HANDLERS
 import handleVisitStep, {handleVisitNextStep, handleVisitPrevStep} from "./handlers/handleVisitStep";
 import handleAddStep from "./handlers/handleAddStep";
 import handleTourStart from "./handlers/handleTourStart";
@@ -16,32 +26,11 @@ import handleSetOptions from "./handlers/handleSetOptions";
 import handleClose from "./handlers/handleClose";
 import handleRefreshTour, {handleRefreshDialog} from "./handlers/handleRefresh";
 import handleFinishTour, {delFinishedTour, getIsFinished} from "./handlers/handleFinishTour";
-import {createTourGuideDialog} from "./core/dialog";
-import {computeBackdropAttributes, createTourGuideBackdrop} from "./core/backdrop";
-import {handleOnAfterExit, handleOnAfterStepChange, handleOnBeforeExit, handleOnBeforeStepChange, handleOnFinish} from "./core/callbacks";
-import {clickOutsideHandler, handleDestroyListeners, handleInitListeners, keyPressHandler} from "./core/listeners";
-import TourGuideOptionsType from "./core/options";
+// UTIL
 import defaultOptions from "./util/util_default_options";
-import computeTourPositions from "./core/positioning";
 
-
-class TourGuideStepType {
-    title?: string
-    content!: string | HTMLElement | Element
-    target?: HTMLElement | Element | HTMLInputElement | string | null = null
-    fixed?: boolean = false
-    order?: number = 999
-    group?: string = "tour"
-    // Enter events
-    beforeEnter?: (currentStep: TourGuideStepType, nextStep: TourGuideStepType)=>(void | Promise<unknown>)
-    afterEnter?: (currentStep: TourGuideStepType, nextStep: TourGuideStepType)=>(void | Promise<unknown>)
-    // Leave events
-    beforeLeave?: (currentStep: TourGuideStepType, nextStep: TourGuideStepType)=>(void | Promise<unknown>)
-    afterLeave?: (currentStep: TourGuideStepType, nextStep: TourGuideStepType)=>(void | Promise<unknown>)
-}
-
-
-class TourGuideClient implements TourGuideClient{
+// Tour
+class TourGuideClient{
     /**
      * Primary elements
      */
@@ -54,15 +43,15 @@ class TourGuideClient implements TourGuideClient{
     group: string = ""
     isVisible: boolean = false
     activeStep: number = 0
-    tourSteps: TourGuideStepType[] = []
-    options: TourGuideOptionsType = defaultOptions
+    tourSteps: TourGuideStep[] = []
+    options: TourGuideOptions = defaultOptions
     isFinished = getIsFinished
 
     /**
      * Constructor
      * @param options
      */
-    constructor(options?: TourGuideOptionsType) {
+    constructor(options?: TourGuideOptions) {
         this.dialog = document.createElement('div')
         this.backdrop = document.createElement('div')
         this.options = defaultOptions
@@ -145,23 +134,24 @@ class TourGuideClient implements TourGuideClient{
     _globalAfterChangeCallback! : ()=>(void | Promise<unknown>)
 
     // FINISH
-    onFinish = handleOnFinish
+    readonly onFinish = handleOnFinish
     // EXIT
-    onBeforeExit = handleOnBeforeExit
-    onAfterExit = handleOnAfterExit
+    readonly onBeforeExit = handleOnBeforeExit
+    readonly onAfterExit = handleOnAfterExit
     // STEP CHANGE
-    onBeforeStepChange = handleOnBeforeStepChange
-    onAfterStepChange = handleOnAfterStepChange
+    readonly onBeforeStepChange = handleOnBeforeStepChange
+    readonly onAfterStepChange = handleOnAfterStepChange
 }
 
-const TourGuide = (options? : TourGuideOptionsType)=>{
-    return new TourGuideClient(options)
-}
+// Fn wrapper for script instantiation
+// *** Redundant ****
+// const createInstance = (options? : TourGuideOptions)=>{
+//     return new TourGuideClient(options)
+// }
+//
+// export default createInstance
 
-export default TourGuide
 export {
     // Client
     TourGuideClient,
-    // Types
-    TourGuideStepType,
 }

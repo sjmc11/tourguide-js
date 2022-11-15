@@ -1,5 +1,5 @@
-import {computeDots, dotsWrapperHtmlString} from "./dots";
 import {TourGuideClient} from "../Tour";
+import {computeDots, dotsWrapperHtmlString} from "./dots";
 import {arrow, autoPlacement, computePosition as fui_computePosition, offset, Placement, shift} from "@floating-ui/dom";
 
 /**

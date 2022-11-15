@@ -6,6 +6,7 @@
     "skipLibCheck": true,
     "moduleResolution": "node",
     "resolveJsonModule": true,
+    "isolatedModules": true,
 //    "strict": true,
 //    "noUnusedLocals": true,
     "allowJs": true,

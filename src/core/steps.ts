@@ -1,5 +1,5 @@
-import {TourGuideClient, TourGuideStepType} from "../Tour";
-
+import {TourGuideClient} from "../Tour";
+import {TourGuideStep} from "../types/TourGuideStep";
 /**
  * computeTourSteps
  * @param tgInstance
@@ -7,17 +7,14 @@ import {TourGuideClient, TourGuideStepType} from "../Tour";
 async function computeTourSteps(tgInstance : TourGuideClient){
     return new Promise(async (resolve, reject) => {
 
-        // TS build strict check
-        // if(!this.options.steps) return
-
-        let computedSteps : TourGuideStepType[] = []
+        let computedSteps : TourGuideStep[] = []
 
         /**
          * Process steps from tour options
          */
         // Compute targets to HTML element and Body if not set
         if(tgInstance.options.steps && tgInstance.options.steps.length) {
-            computedSteps = tgInstance.options.steps.map((t:TourGuideStepType)=>{
+            computedSteps = tgInstance.options.steps.map((t:TourGuideStep)=>{
                 // If target is string, query element by selector
                 if(typeof t.target === "string") t.target = document.querySelector(t.target)
                 // If target is empty, set target to body
@@ -58,14 +55,14 @@ async function computeTourSteps(tgInstance : TourGuideClient){
                 fixed: stepFixed !== null && stepFixed !== "false",
                 group: stepGroup ? stepGroup : undefined,
                 // TODO: Support events from data attributes
-            } as TourGuideStepType)
+            } as TourGuideStep)
         })
 
 
         /**
          * Filter by group
          */
-        if(tgInstance.group) computedSteps = computedSteps.filter((step : TourGuideStepType)=>{
+        if(tgInstance.group) computedSteps = computedSteps.filter((step : TourGuideStep)=>{
             return step.group === tgInstance.group
         })
 

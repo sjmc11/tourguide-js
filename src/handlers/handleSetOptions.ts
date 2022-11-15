@@ -1,5 +1,5 @@
 import {TourGuideClient} from "../Tour";
-import TourGuideOptionsType from "../core/options";
+import TourGuideOptions from "../core/options";
 import {renderDialogHtml, updateDialogHtml} from "../core/dialog";
 import waitForElm from "../util/util_wait_for_element";
 
@@ -7,7 +7,7 @@ import waitForElm from "../util/util_wait_for_element";
  * handleSetOptions
  * @param options
  */
-async function handleSetOptions(this: TourGuideClient, options: TourGuideOptionsType) {
+async function handleSetOptions(this: TourGuideClient, options: TourGuideOptions) {
     if (!options) return
 
     /**

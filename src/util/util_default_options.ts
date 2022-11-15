@@ -1,4 +1,4 @@
-import TourGuideOptionsType from "../core/options";
+import TourGuideOptions from "../core/options";
 
 const defaultOptions = {
     nextLabel: "Next",
@@ -31,6 +31,6 @@ const defaultOptions = {
     rememberStep: false,
     debug: true,
     steps: []
-} as TourGuideOptionsType
+} as TourGuideOptions
 
 export default defaultOptions
