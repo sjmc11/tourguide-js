@@ -1,7 +1,6 @@
-<p style="text-align: center">
+<p style="text-align: center" align="center">
 <img src="tg-logo.svg" width="100"/>
 </p>
-
 <h1 align="center" style="text-align: center">TourGuide JS</h1>
 <p align="center" style="text-align: center">
 Intuitive and customisable tours for user application onboarding
@@ -45,5 +44,5 @@ tg.start()
 
 ----
 
-#### TourGuide JS uses FloatUi for intelligent dialog positioning
+#### TourGuide JS uses Floating-Ui for intelligent dialog positioning
 See [Floating UI](https://floating-ui.com/) for more information.
