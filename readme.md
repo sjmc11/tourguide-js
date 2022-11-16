@@ -12,7 +12,9 @@ Intuitive and customisable tours for user application onboarding
 ----
 
 
-<img src="https://tourguidejs.com/tourguidejs-demo.gif" width="624" style="width: 100%;height: auto">
+<p align="center">
+<img src="https://tourguidejs.com/tourguidejs-demo.gif" width="624">
+</p>
 
 ## QuickStart
 ### Installation
