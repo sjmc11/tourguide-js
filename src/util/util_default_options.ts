@@ -21,7 +21,7 @@ const defaultOptions = {
     stepDotsPlacement: "footer",
     showButtons: true,
     showStepProgress: true,
-    keyboardControls: false,
+    keyboardControls: true,
     exitOnEscape: true,
     exitOnClickOutside: true,
     autoScroll: true,

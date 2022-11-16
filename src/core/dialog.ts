@@ -45,7 +45,6 @@ async function renderDialogHtml(tgInstance : TourGuideClient){
     } // end close button
     htmlRes += `</div>` // Close header
     htmlRes += `<div class="tg-dialog-body" id="tg-dialog-body"><!-- JS rendered --></div>` // Body
-    htmlRes += `<div class="p-3 border-t text-indigo-400 hover:text-pink-500" id="testBtn">Test btn</div>` // Test button
     // Append dots if enabled for body as separate element
     if(tgInstance.options.showStepDots && tgInstance.options.stepDotsPlacement === 'body') {
         const dotsWrapperHtml = dotsWrapperHtmlString()
