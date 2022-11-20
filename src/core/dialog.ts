@@ -44,6 +44,9 @@ async function renderDialogHtml(tgInstance : TourGuideClient){
         htmlRes += `</div>` // Close button
     } // end close button
     htmlRes += `</div>` // Close header
+    if(tgInstance.options.progressBar){
+        htmlRes += `<div class="tg-dialog-progress-bar"><span class="tg-bar" id="tg-dialog-progbar"></span></div>` // Progress bar
+    }
     htmlRes += `<div class="tg-dialog-body" id="tg-dialog-body"><!-- JS rendered --></div>` // Body
     // Append dots if enabled for body as separate element
     if(tgInstance.options.showStepDots && tgInstance.options.stepDotsPlacement === 'body') {
@@ -116,6 +119,13 @@ function updateDialogHtml(tgInstance : TourGuideClient){
         // Step progress
         const tgProgress = document.getElementById('tg-step-progress')
         if(tgProgress) tgProgress.innerHTML = ((tgInstance.activeStep + 1) + '/' + (tgInstance.tourSteps).length)
+
+        // Progress bar
+        const tgProgBar = document.getElementById('tg-dialog-progbar')
+        if(tgProgBar) {
+            if(tgInstance.options.progressBar) tgProgBar.style.backgroundColor = tgInstance.options.progressBar
+            tgProgBar.style.width = (((tgInstance.activeStep + 1) / tgInstance.tourSteps.length) * 100) + '%'
+        }
 
         resolve(true)
     })

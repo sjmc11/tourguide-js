@@ -91,6 +91,7 @@ TourGuide JS works by initializing a class, it contains all the relevant events,
     stepDotsPlacement: 'footer' | 'body' // show dots in dialog body/footer | default = "footer"
     showButtons: boolean // show next/prev buttons | default = true
     showStepProgress: boolean // show `1/5` human-readable step progress | default = true
+    progressBar: string // show progress bar under dialog header - pass a colour string to enable
     keyboardControls: boolean // show next & prev arrows keys + esc key | default =false
     exitOnEscape: boolean // Close the tour on escape key | default = true
     exitOnClickOutside: boolean // Close the tour on backdrop click | default = true

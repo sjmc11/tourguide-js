@@ -1,4 +1,4 @@
-$popperPadding: 20px;
+$popperPadding: 25px;
 
 
 [data-tg-tour]{
@@ -36,7 +36,7 @@ $popperPadding: 20px;
   position: absolute;
   top: 0;
   left: 0;
-  padding: 5px;
+  padding: 0;
   font-size: .9rem;
   .tg-dialog-header{
     display: flex;
@@ -64,6 +64,23 @@ $popperPadding: 20px;
       &:focus{
         opacity: 1;
       }
+    }
+  }
+  .tg-dialog-progress-bar{
+    background: #f1f1f1;
+    height: 5px;
+    display: block;
+    margin-top: ($popperPadding*0.75);
+    position: relative;
+    > .tg-bar{
+      position: absolute;
+      top: 0;
+      left: 0;
+      min-width: 4px;
+      background: #414144;
+      height: 100%;
+      display: block;
+      transition: all 300ms;
     }
   }
   .tg-dialog-body{

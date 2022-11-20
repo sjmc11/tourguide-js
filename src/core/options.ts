@@ -31,6 +31,7 @@ interface TourGuideOptions {
     stepDotsPlacement?: "footer" | "body" // show dots in dialog body/footer
     showButtons?: boolean // show next/prev buttons
     showStepProgress?: boolean // show `1/5` human-readable step progress
+    progressBar?: string // show progress bar under header
     closeButton?: boolean, // show close button
     rememberStep?: boolean // open tour on last active step
     debug?: boolean // show console logging
