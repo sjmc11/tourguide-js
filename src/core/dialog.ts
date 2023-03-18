@@ -57,7 +57,13 @@ async function renderDialogHtml(tgInstance : TourGuideClient){
     htmlRes += `<div class="tg-dialog-footer">` // Start footer
 
         // Append prev button if enabled
-        if(tgInstance.options.showButtons && !tgInstance.options.hidePrev) htmlRes += `<button type="button" class="tg-dialog-btn" id="tg-dialog-prev-btn">${tgInstance.options.prevLabel}</button>`
+        let prevBtnClass = "tg-dialog-btn"
+        let prevDisabled = "false"
+        if(tgInstance.activeStep === 0){
+            prevDisabled = "true"
+            prevBtnClass += " disabled"
+        }
+        if(tgInstance.options.showButtons && !tgInstance.options.hidePrev) htmlRes += `<button type="button" class="` + prevBtnClass + `" id="tg-dialog-prev-btn" disabled="` + prevDisabled + `">${tgInstance.options.prevLabel}</button>`
 
         htmlRes += '<div class="tg-dialog-footer-sup">'
 
