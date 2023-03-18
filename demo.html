@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TourGuide JS Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+<!--    <link rel="stylesheet" href="https://unpkg.com/@sjmc11/tourguidejs/dist/css/tour.min.css">-->
+    <link rel="stylesheet" href="/dist/css/tour.min.css">
+</head>
+<body>
+
+<div class="max-w-6xl mx-auto px-6 py-6 lg:pt-12">
+
+    <h1 class="text-center text-2xl font-bold shadow-text">
+        <span class="bg-clip-text text-transparent bg-gradient-to-b from-slate-400/75 to-slate-400">Basic HTML page for hands on testing</span>
+    </h1>
+
+    <div class="lg:grid lg:my-12 grid-cols-3 gap-12">
+        <div class="card rounded bg-slate-100 p-12 my-6 border" data-tg-tour="Step 1" data-tg-title="Example heading 1">
+            <h5 class="font-bold block mb-5">Example heading 1</h5>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias consequuntur cumque deserunt doloribus eos esse ipsam ipsum nam neque nisi odio officiis, pariatur sit tenetur voluptatum. Deserunt facilis quos tempora?</p>
+        </div><!-- end card -->
+        <div class="card rounded bg-slate-100 p-12 my-6 border" data-tg-tour="Step 2" data-tg-title="Example heading 2">
+            <h5 class="font-bold block mb-5">Example heading 2</h5>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias consequuntur cumque deserunt doloribus eos esse ipsam ipsum nam neque nisi odio officiis, pariatur sit tenetur voluptatum. Deserunt facilis quos tempora?</p>
+        </div><!-- end card -->
+        <div class="card rounded bg-slate-100 p-12 my-6 border" data-tg-tour="Step 3" data-tg-title="Example heading 3">
+            <h5 class="font-bold block mb-5">Example heading 3</h5>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias consequuntur cumque deserunt doloribus eos esse ipsam ipsum nam neque nisi odio officiis, pariatur sit tenetur voluptatum. Deserunt facilis quos tempora?</p>
+        </div><!-- end card -->
+    </div><!-- end grid -->
+
+    <button class="bg-indigo-600 text-white rounded px-4 py-2 mx-auto block hover:bg-indigo-700" onclick="openTour()">
+        <span>Start tour</span>
+    </button><!-- end btn -->
+
+</div><!-- end container -->
+
+    <script src="dist/tour.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script type="text/javascript">
+    const tg = new tourguide.TourGuideClient({})
+
+    // const triggerBtn = document.getElementById('tourTrigger')
+
+    function openTour(){
+        tg.start()
+    }
+
+</script>
+
+</body>
+</html>
