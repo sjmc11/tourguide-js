@@ -1,6 +1,6 @@
 {
   "name": "@sjmc11/tourguidejs",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "A customizable tour guide library for front-end applications.",
   "homepage": "https://tourguidejs.com",
   "main": "dist/tour.js",
@@ -12,7 +12,7 @@
     "tour"
   ],
   "author": "JC",
-  "license": "GNU",
+  "license": "MIT",
   "dependencies": {
     "@floating-ui/dom": "^1.0.3",
     "sass": "^1.55.0"

@@ -118,6 +118,18 @@ function updateDialogHtml(tgInstance : TourGuideClient){
         const tgDots = document.getElementById('tg-dialog-dots')
         if(tgDots && tgInstance.options.showStepDots && computeDots(tgInstance)) tgDots.innerHTML = computeDots(tgInstance)
 
+        // Back button
+        const backBtn = document.getElementById('tg-dialog-prev-btn')
+        if(backBtn) {
+            if (tgInstance.activeStep === 0) {
+                backBtn.classList.add('disabled')
+                backBtn.setAttribute("disabled", 'true');
+            } else {
+                backBtn.classList.remove('disabled')
+                backBtn.removeAttribute("disabled");
+            }
+        }
+
         // Next/Finish button
         const nextBtn = document.getElementById('tg-dialog-next-btn')
         if(nextBtn) nextBtn.innerHTML = ((tgInstance.activeStep + 1) >= tgInstance.tourSteps.length ? tgInstance.options.finishLabel : tgInstance.options.nextLabel) as string
