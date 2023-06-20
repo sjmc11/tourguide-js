@@ -15,6 +15,8 @@ async function handleFinishTour(this: TourGuideClient, exit : boolean = true, to
     if(this.options.completeOnFinish) {
         if (!localStorage.tg_tours_complete) {
             localStorage.tg_tours_complete = [tourGroup]
+            if (exit) await this.exit();
+            this.activeStep = 0;
             return
         }
         const storageTours = (localStorage.tg_tours_complete as string).split(',')
