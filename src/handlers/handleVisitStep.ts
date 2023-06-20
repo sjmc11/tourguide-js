@@ -20,7 +20,7 @@ async function handleVisitStep(this : TourGuideClient, stepIndex: "next" | "prev
          * Do completion if end of tour
          */
         if(stepIndex >= this.tourSteps.length){
-            await this.finishTour(true)
+            await this.finishTour(true, this.group)
             return
         }
 
