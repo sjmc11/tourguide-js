@@ -22,6 +22,7 @@ $popperPadding: 25px;
     transition: all 300ms;
   }
 }
+
 .tg-dialog{
   border-radius: 12px;
   animation-delay: 100ms;
@@ -180,8 +181,8 @@ $popperPadding: 25px;
   .tg-arrow{
     position: absolute;
     background: #fff;
-    width: 9px;
-    height: 9px;
+    width: 10px;
+    height: 10px;
     border-radius: 1px;
     transform: rotate(45deg);
   }
