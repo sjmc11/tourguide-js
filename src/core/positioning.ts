@@ -1,4 +1,4 @@
-import {TourGuideClient} from "../Tour";
+import type {TourGuideClient} from "../Tour";
 import {computeBackdropPosition} from "./backdrop";
 import {computeDialogPosition} from "./dialog";
 

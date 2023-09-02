@@ -1,5 +1,5 @@
-import {TourGuideClient} from "../Tour";
-import {TourGuideStep} from "../types/TourGuideStep";
+import type {TourGuideClient} from "../Tour";
+import type {TourGuideStep} from "../types/TourGuideStep";
 import computeTourSteps from "../core/steps";
 import {updateDialogHtml} from "../core/dialog";
 import waitForElm from "../util/util_wait_for_element";

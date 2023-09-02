@@ -10,14 +10,14 @@
  */
 
 // CORE
-import TourGuideOptions from "./core/options";
+import type TourGuideOptions from "./core/options";
 import {createTourGuideDialog} from "./core/dialog";
 import computeTourPositions from "./core/positioning";
 import {computeBackdropAttributes, createTourGuideBackdrop} from "./core/backdrop";
 import {handleOnAfterExit, handleOnAfterStepChange, handleOnBeforeExit, handleOnBeforeStepChange, handleOnFinish} from "./core/callbacks";
 import {clickOutsideHandler, handleDestroyListeners, handleInitListeners, keyPressHandler} from "./core/listeners";
 // Step Type
-import {TourGuideStep} from "./types/TourGuideStep";
+import type {TourGuideStep} from "./types/TourGuideStep";
 // HANDLERS
 import handleVisitStep, {handleVisitNextStep, handleVisitPrevStep} from "./handlers/handleVisitStep";
 import handleAddStep from "./handlers/handleAddStep";

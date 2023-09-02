@@ -1,5 +1,5 @@
-import {TourGuideClient} from "../Tour";
-import {TourGuideStep} from "../types/TourGuideStep";
+import type {TourGuideClient} from "../Tour";
+import type {TourGuideStep} from "../types/TourGuideStep";
 /**
  * computeTourSteps
  * @param tgInstance

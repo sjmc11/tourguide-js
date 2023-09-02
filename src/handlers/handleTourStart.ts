@@ -1,4 +1,4 @@
-import {TourGuideClient} from "../Tour";
+import type {TourGuideClient} from "../Tour";
 import waitForElm from "../util/util_wait_for_element";
 import computeTourSteps from "../core/steps";
 

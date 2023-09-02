@@ -1,6 +1,6 @@
-import {TourGuideClient} from "../Tour";
+import type {TourGuideClient} from "../Tour";
 import {computeDots, dotsWrapperHtmlString} from "./dots";
-import {arrow, autoPlacement, computePosition as fui_computePosition, offset, Placement, shift} from "@floating-ui/dom";
+import {arrow, autoPlacement, computePosition as fui_computePosition, offset, type Placement, shift} from "@floating-ui/dom";
 
 /**
  * createTourGuideDialog

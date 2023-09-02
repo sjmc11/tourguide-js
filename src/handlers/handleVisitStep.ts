@@ -1,4 +1,4 @@
-import {TourGuideClient} from "../Tour";
+import type {TourGuideClient} from "../Tour";
 import {updateDialogHtml} from "../core/dialog";
 import scrollToTarget from "../core/scrollTo";
 

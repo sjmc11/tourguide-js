@@ -1,5 +1,5 @@
-import { AlignedPlacement, Side } from "@floating-ui/core"
-import { TourGuideStep } from "../types/TourGuideStep"
+import type { AlignedPlacement, Side } from "@floating-ui/core"
+import type { TourGuideStep } from "../types/TourGuideStep"
 
 /**
  * TourGuideOptions Type

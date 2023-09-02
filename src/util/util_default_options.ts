@@ -1,4 +1,4 @@
-import TourGuideOptions from "../core/options";
+import type TourGuideOptions from "../core/options";
 
 const defaultOptions = {
     nextLabel: "Next",
