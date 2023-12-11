@@ -34,6 +34,7 @@ async function handleFinishTour(this: TourGuideClient, exit : boolean = true, to
  * @param tourGroup
  */
 function getIsFinished(this : TourGuideClient, tourGroup : string = 'tour') : boolean {
+    if(!localStorage.tg_tours_complete) return false
     const storageTours = (localStorage.tg_tours_complete as string).split(',')
     return storageTours.includes(tourGroup)
 }

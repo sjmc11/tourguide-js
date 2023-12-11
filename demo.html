@@ -55,7 +55,7 @@
         beforeEnter: ()=>{
             console.log('wait 6 seconds')
             return new Promise((resolve, reject) => {
-                setTimeout(function () {  resolve(); }, 6000);
+                setTimeout(function () {  resolve(); }, 1000);
             })
         }
     },{
@@ -74,7 +74,8 @@
 
     const tg = new tourguide.TourGuideClient({
         steps: steps,
-        group: "groupA"
+        group: "groupA",
+        completeOnFinish: true,
     })
 
     // const triggerBtn = document.getElementById('tourTrigger')
