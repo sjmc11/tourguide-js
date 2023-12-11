@@ -48,6 +48,13 @@ class TourGuideClient{
     isFinished = getIsFinished
 
     /**
+     * Private
+     * @private
+     * promiseWaiting - used to wait for async functions to complete
+     */
+    _promiseWaiting = false
+
+    /**
      * Constructor
      * @param options
      */

@@ -13,19 +13,19 @@
 <div class="max-w-6xl mx-auto px-6 py-6 lg:pt-12">
 
     <h1 class="text-center text-2xl font-bold shadow-text">
-        <span class="bg-clip-text text-transparent bg-gradient-to-b from-slate-400/75 to-slate-400">Basic HTML page for hands on testing</span>
+        <span class="bg-clip-text text-transparent bg-gradient-to-b from-slate-400/75 to-slate-400" id="title">Basic HTML page for hands on testing</span>
     </h1>
 
     <div class="lg:grid lg:my-12 grid-cols-3 gap-12">
-        <div class="card rounded bg-slate-100 p-12 my-6 border" data-tg-tour="Step 1" data-tg-title="Example heading 1">
+        <div class="card rounded bg-slate-100 p-12 my-6 border" id="card1" data-tg-tour="Step 1" data-tg-title="Example heading 1">
             <h5 class="font-bold block mb-5">Example heading 1</h5>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias consequuntur cumque deserunt doloribus eos esse ipsam ipsum nam neque nisi odio officiis, pariatur sit tenetur voluptatum. Deserunt facilis quos tempora?</p>
         </div><!-- end card -->
-        <div class="card rounded bg-slate-100 p-12 my-6 border" data-tg-tour="Step 2" data-tg-title="Example heading 2">
+        <div class="card rounded bg-slate-100 p-12 my-6 border" id="card2" data-tg-tour="Step 2" data-tg-title="Example heading 2">
             <h5 class="font-bold block mb-5">Example heading 2</h5>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias consequuntur cumque deserunt doloribus eos esse ipsam ipsum nam neque nisi odio officiis, pariatur sit tenetur voluptatum. Deserunt facilis quos tempora?</p>
         </div><!-- end card -->
-        <div class="card rounded bg-slate-100 p-12 my-6 border" data-tg-tour="Step 3" data-tg-title="Example heading 3">
+        <div class="card rounded bg-slate-100 p-12 my-6 border" id="card3" data-tg-tour="Step 3" data-tg-title="Example heading 3">
             <h5 class="font-bold block mb-5">Example heading 3</h5>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias consequuntur cumque deserunt doloribus eos esse ipsam ipsum nam neque nisi odio officiis, pariatur sit tenetur voluptatum. Deserunt facilis quos tempora?</p>
         </div><!-- end card -->
@@ -37,12 +37,54 @@
 
 </div><!-- end container -->
 
-    <script src="dist/tour.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="dist/tour.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <script type="text/javascript">
-    const tg = new tourguide.TourGuideClient({})
+    const steps = [{
+        content: "This is the title element",
+        title: "Welcome aboard 👋",
+        target: "#title",
+        order: "",
+        group: "groupA",
+    },{
+        content: "Card One",
+        title: "This is the first card",
+        target: "#card1",
+        order: "",
+        group: "groupA",
+        beforeEnter: ()=>{
+            console.log('wait 6 seconds')
+            return new Promise((resolve, reject) => {
+                setTimeout(function () {  resolve(); }, 6000);
+            })
+        }
+    },{
+        content: "Card Deux",
+        title: "This is the second card",
+        target: "#card2",
+        order: "",
+        group: "groupA",
+    },{
+        content: "Card Three",
+        title: "This is the last card",
+        target: "#card3",
+        order: "",
+        group: "groupA",
+    }]
+
+    const tg = new tourguide.TourGuideClient({
+        steps: steps,
+        group: "groupA"
+    })
 
     // const triggerBtn = document.getElementById('tourTrigger')
+
+    // tg.onBeforeStepChange(()=>{
+    //     return new Promise((resolve, reject) => {
+    //         setTimeout(function () {  resolve(); }, 6000);
+    //     })
+    // })
+
 
     function openTour(){
         tg.start()

@@ -8,6 +8,9 @@ import scrollToTarget from "../core/scrollTo";
  */
 async function handleVisitStep(this : TourGuideClient, stepIndex: "next" | "prev" | number) {
     return new Promise(async (resolve, reject) => {
+
+        if(this._promiseWaiting) return reject("Promise waiting")
+
         /**
          * Convert next & prev string to stepIndex
          */
@@ -24,9 +27,11 @@ async function handleVisitStep(this : TourGuideClient, stepIndex: "next" | "prev
             return
         }
 
+        this._promiseWaiting = true
         await goToStep(this, stepIndex as number).catch((e)=>{
             return reject(e)
         })
+        this._promiseWaiting = false
         return resolve(true)
     })
 }
@@ -38,7 +43,9 @@ async function handleVisitNextStep(this : TourGuideClient) {
     return new Promise(async (resolve, reject) => {
         const stepIndex = this.activeStep + 1
         try{
+            this._promiseWaiting = true
             await this.visitStep(stepIndex)
+            this._promiseWaiting = false
         } catch (e) {
             return reject(e)
         }
@@ -53,7 +60,9 @@ async function handleVisitPrevStep(this : TourGuideClient) {
     return new Promise(async (resolve, reject) => {
         const stepIndex = this.activeStep - 1
         try{
+            this._promiseWaiting = true
             await this.visitStep(stepIndex)
+            this._promiseWaiting = false
         } catch (e) {
             return reject(e)
         }
@@ -87,7 +96,6 @@ function goToStep(tgInstance: TourGuideClient, stepIndex : number){
         const currentStep = tgInstance.tourSteps[currentStepIndex]
         const nextStep = tgInstance.tourSteps[stepIndex]
         if (!nextStep || !currentStep) return bail("Step not found by index")
-
 
 
         /** Before callbacks **/
