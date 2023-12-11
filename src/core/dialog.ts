@@ -1,6 +1,6 @@
 import {TourGuideClient} from "../Tour";
 import {computeDots, dotsWrapperHtmlString} from "./dots";
-import {arrow, autoPlacement, computePosition as fui_computePosition, offset, Placement, shift} from "@floating-ui/dom";
+import {arrow, autoPlacement, computePosition as fui_computePosition, offset, Placement, shift, MiddlewareData} from "@floating-ui/dom";
 
 /**
  * createTourGuideDialog
@@ -207,28 +207,68 @@ function computeDialogPosition(tgInstance : TourGuideClient) {
             });
 
             // Arrow data
-            if(middlewareData.arrow) {
-                const arrowX = middlewareData.arrow.x
-                const arrowY = middlewareData.arrow.y
-
-                const staticSide = {
-                    top: "bottom",
-                    right: "left",
-                    bottom: "top",
-                    left: "right",
-                }[placement.split('-')[0]];
-
-                // Position arrow
-                if (arrowElement) Object.assign(arrowElement.style, {
-                    left: arrowX != null ? `${arrowX}px` : '',
-                    top: arrowY != null ? `${arrowY}px` : '',
-                    [staticSide as string]: "-4px",
-                });
+            if(middlewareData.arrow && arrowElement) {
+                Object.assign(arrowElement.style, arrowStyles(middlewareData.arrow, placement, tgInstance.dialog))
+                // const arrowX = middlewareData.arrow.x
+                // const arrowY = middlewareData.arrow.y
+                //
+                // const staticSide = {
+                //     top: "bottom",
+                //     right: "left",
+                //     bottom: "top",
+                //     left: "right",
+                // }[placement.split('-')[0]];
+                //
+                // // Position arrow
+                // if (arrowElement) Object.assign(arrowElement.style, {
+                //     left: arrowX != null ? `${arrowX}px` : '',
+                //     top: arrowY != null ? `${arrowY}px` : '',
+                //     [staticSide as string]: "-4px",
+                // });
             }
             return resolve(true)
         })
     })
 }
 
+/**
+ * arrowStyles
+ * @param arrowMiddlewareData
+ * @param placement
+ * @param dialog
+ * @private
+ */
+function arrowStyles(arrowMiddlewareData: MiddlewareData["arrow"], placement: Placement, dialog: TourGuideClient["dialog"]) : object {
+    const arrowX = arrowMiddlewareData.x || 0;
+    const arrowY = arrowMiddlewareData.y || 0;
+    const arrowSize = 10;
+
+    const staticSide = {
+        top: "bottom",
+        right: "left",
+        bottom: "top",
+        left: "right",
+    }[placement.split('-')[0]];
+
+    const maxWidth = dialog.clientWidth - arrowSize;
+    const maxHeight = dialog.clientHeight - arrowSize;
+
+    const isAtMaxHeight = Math.abs(arrowY - maxHeight) <= arrowSize ;
+    const isAtMaxWidth = Math.abs(arrowX - maxWidth) <= arrowSize;
+    const isAtMinHeight = Math.abs(arrowY) <= arrowSize;
+    const isAtMinWidth = Math.abs(arrowX) <= arrowSize;
+
+    const isInCorner = arrowMiddlewareData.centerOffset !== 0 || (
+        (isAtMinWidth || isAtMaxWidth) &&
+        (isAtMinHeight || isAtMaxHeight)
+    );
+
+    return {
+        left: isAtMinWidth ? (staticSide === 'right' ? '' : '0') : (isAtMaxWidth ? `${maxWidth}px` : `${arrowX}px`),
+        top: isAtMinHeight ? (staticSide === 'bottom' ? '' : '0') : (isAtMaxHeight ? `${maxHeight}px` : `${arrowY}px`),
+        [staticSide as string]: isInCorner ? "0" : `-${arrowSize / 2}px`,
+        transform: isInCorner ? "none" : "rotate(45deg)",
+    };
+}
 
 export {createTourGuideDialog, renderDialogHtml, updateDialogHtml, computeDialogPosition}
