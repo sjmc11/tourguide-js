@@ -56,13 +56,29 @@ $popperPadding: 25px;
       margin-left: 10px;
       opacity: .4;
       cursor: pointer;
-      margin-top: -1px;
       white-space: nowrap;
       &:hover{
         opacity: 8;
       }
       &:focus{
         opacity: 1;
+      }
+    }
+    .tg-dialog-spinner{
+      display: none;
+      opacity: .4;
+      margin-top: -1px;
+      -webkit-animation: tg-spin 1s linear infinite;
+      -moz-animation: tg-spin 1s linear infinite;
+      -o-animation: tg-spin 1s linear infinite;
+      animation: tg-spin 1s linear infinite;
+      @keyframes tg-spin {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(359deg);
+        }
       }
     }
   }
@@ -191,5 +207,27 @@ $popperPadding: 25px;
   }
   &.animate-position{
     transition: all 300ms;
+  }
+
+  &.tg-dialog-loading{
+    .tg-dialog-header{
+      .tg-dialog-title{
+        opacity: .4;
+      }
+      .tg-dialog-close-btn{
+        display: none;
+      }
+      .tg-dialog-spinner{
+        display: inline-block;
+      }
+    }
+    .tg-dialog-body{
+      opacity: .4;
+      pointer-events: none;
+    }
+    .tg-dialog-footer{
+      pointer-events: none;
+      opacity: .4;
+    }
   }
 }

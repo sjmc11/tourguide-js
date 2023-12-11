@@ -25,6 +25,7 @@ async function handleFinishTour(this: TourGuideClient, exit : boolean = true, to
     }
     if(exit) await this.exit()
     this.activeStep = 0
+    this._promiseWaiting = false
     return true
 }
 

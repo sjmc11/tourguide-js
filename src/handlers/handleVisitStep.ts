@@ -9,6 +9,7 @@ import scrollToTarget from "../core/scrollTo";
 async function handleVisitStep(this : TourGuideClient, stepIndex: "next" | "prev" | number) {
     return new Promise(async (resolve, reject) => {
 
+        // Loading state
         if(this._promiseWaiting) return reject("Promise waiting")
 
         /**
@@ -27,11 +28,10 @@ async function handleVisitStep(this : TourGuideClient, stepIndex: "next" | "prev
             return
         }
 
-        this._promiseWaiting = true
         await goToStep(this, stepIndex as number).catch((e)=>{
             return reject(e)
         })
-        this._promiseWaiting = false
+
         return resolve(true)
     })
 }
@@ -43,9 +43,7 @@ async function handleVisitNextStep(this : TourGuideClient) {
     return new Promise(async (resolve, reject) => {
         const stepIndex = this.activeStep + 1
         try{
-            this._promiseWaiting = true
             await this.visitStep(stepIndex)
-            this._promiseWaiting = false
         } catch (e) {
             return reject(e)
         }
@@ -60,9 +58,7 @@ async function handleVisitPrevStep(this : TourGuideClient) {
     return new Promise(async (resolve, reject) => {
         const stepIndex = this.activeStep - 1
         try{
-            this._promiseWaiting = true
             await this.visitStep(stepIndex)
-            this._promiseWaiting = false
         } catch (e) {
             return reject(e)
         }
@@ -99,6 +95,11 @@ function goToStep(tgInstance: TourGuideClient, stepIndex : number){
 
 
         /** Before callbacks **/
+        // If any callbacks exist, set loading state
+        if(tgInstance._globalBeforeChangeCallback && stepIndex !== currentStepIndex || currentStep.beforeLeave || nextStep.beforeEnter){
+            tgInstance._promiseWaiting = true
+            tgInstance.dialog.classList.add('tg-dialog-loading')
+        }
 
         // Before change callback - global
         if(tgInstance._globalBeforeChangeCallback && stepIndex !== currentStepIndex){
@@ -170,6 +171,10 @@ function goToStep(tgInstance: TourGuideClient, stepIndex : number){
 
         // After change callback - global
         if(tgInstance._globalAfterChangeCallback && stepIndex !== currentStepIndex) await tgInstance._globalAfterChangeCallback()
+
+        // Clear loading state
+        tgInstance._promiseWaiting = false
+        tgInstance.dialog.classList.remove('tg-dialog-loading')
 
         return resolve(true)
 
