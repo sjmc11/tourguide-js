@@ -239,8 +239,8 @@ function computeDialogPosition(tgInstance : TourGuideClient) {
  * @private
  */
 function arrowStyles(arrowMiddlewareData: MiddlewareData["arrow"], placement: Placement, dialog: TourGuideClient["dialog"]) : object {
-    const arrowX = arrowMiddlewareData.x || 0;
-    const arrowY = arrowMiddlewareData.y || 0;
+    const arrowX = arrowMiddlewareData?.x || 0;
+    const arrowY = arrowMiddlewareData?.y || 0;
     const arrowSize = 10;
 
     const staticSide = {
@@ -258,7 +258,7 @@ function arrowStyles(arrowMiddlewareData: MiddlewareData["arrow"], placement: Pl
     const isAtMinHeight = Math.abs(arrowY) <= arrowSize;
     const isAtMinWidth = Math.abs(arrowX) <= arrowSize;
 
-    const isInCorner = arrowMiddlewareData.centerOffset !== 0 || (
+    const isInCorner = arrowMiddlewareData?.centerOffset !== 0 || (
         (isAtMinWidth || isAtMaxWidth) &&
         (isAtMinHeight || isAtMaxHeight)
     );

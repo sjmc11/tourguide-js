@@ -134,11 +134,11 @@ class TourGuideClient{
     /**
      * Callbacks
      */
-    _globalFinishCallback! : ()=>(void | Promise<unknown>)
-    _globalBeforeExitCallback! : ()=>(void | Promise<unknown>)
-    _globalAfterExitCallback! : Function
-    _globalBeforeChangeCallback! : ()=>(void | Promise<unknown>)
-    _globalAfterChangeCallback! : ()=>(void | Promise<unknown>)
+    _globalFinishCallback? : ()=>(void | Promise<unknown>)
+    _globalBeforeExitCallback? : ()=>(void | Promise<unknown>)
+    _globalAfterExitCallback? : Function
+    _globalBeforeChangeCallback? : ()=>(void | Promise<unknown>)
+    _globalAfterChangeCallback? : ()=>(void | Promise<unknown>)
 
     // FINISH
     readonly onFinish = handleOnFinish
