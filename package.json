@@ -1,13 +1,14 @@
 {
   "name": "@sjmc11/tourguidejs",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "A customizable tour guide library for front-end applications.",
   "homepage": "https://tourguidejs.com",
   "main": "dist/tour.js",
+  "types": "src/Tour.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "webpack --config webpack.config.js --watch",
-    "build": "webpack --config webpack.config.js"
+    "build": "webpack --config webpack.config.js && cp src/Tour.d.ts dist/tour.d.ts"
   },
   "keywords": [
     "tour"

@@ -40,7 +40,8 @@ TourGuide JS works by initializing a class, it contains all the relevant events,
     // Callbacks
     _globalFinishCallback! : ()=>(void | Promise<unknown>) // start method handler
     _globalBeforeExitCallback! : ()=>(void | Promise<unknown>) // start method handler
-    _globalAfterExitCallback! : Function // start method handler _globalBeforeChangeCallback! : ()=>(void | Promise<unknown>) // start method handler
+    _globalAfterExitCallback! : Function // start method handler
+    _globalBeforeChangeCallback! : ()=>(void | Promise<unknown>) // start method handler
     _globalAfterChangeCallback! : ()=>(void | Promise<unknown>) // start method handler
 }
 ```
