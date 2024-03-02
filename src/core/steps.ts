@@ -6,7 +6,6 @@ import {TourGuideStep} from "../types/TourGuideStep";
  */
 async function computeTourSteps(tgInstance : TourGuideClient){
     return new Promise(async (resolve, reject) => {
-
         let computedSteps : TourGuideStep[] = []
 
         /**
@@ -15,8 +14,12 @@ async function computeTourSteps(tgInstance : TourGuideClient){
         // Compute targets to HTML element and Body if not set
         if(tgInstance.options.steps && tgInstance.options.steps.length) {
             computedSteps = tgInstance.options.steps.map((t:TourGuideStep)=>{
+                console.log('mapping', t.target)
                 // If target is string, query element by selector
-                if(typeof t.target === "string") t.target = document.querySelector(t.target)
+                if(typeof t.target === "string"){
+                    const targetElement = document.querySelector(t.target)
+                    if (targetElement) t.target = targetElement
+                }
                 // If target is empty, set target to body
                 if(!t.target) t.target = document.body
                 return t
