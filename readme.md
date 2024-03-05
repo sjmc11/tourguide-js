@@ -34,7 +34,7 @@ import {TourGuideClient} from "@sjmc11/tourguidejs/src/Tour"
 ### Declare steps
 Add the [data-tg-tour] attribute to elements that you want to include in your tour. This attribute should contain the relevant text for the tour guide step.
 ```
-<div data-tg-tour="Welcome aboard 👋> ... </div>
+<div data-tg-tour="Welcome aboard 👋"> ... </div>
 ```
 
 ### Create a tour
