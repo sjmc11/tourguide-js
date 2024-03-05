@@ -10,7 +10,7 @@
  */
 
 // CORE
-import TourGuideOptions from "./core/options";
+import type {TourGuideOptions} from "./core/options";
 import {createTourGuideDialog} from "./core/dialog";
 import computeTourPositions from "./core/positioning";
 import {computeBackdropAttributes, createTourGuideBackdrop} from "./core/backdrop";

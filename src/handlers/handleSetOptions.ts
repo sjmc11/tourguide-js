@@ -1,5 +1,5 @@
 import {TourGuideClient} from "../Tour";
-import TourGuideOptions from "../core/options";
+import type {TourGuideOptions} from "../core/options";
 import {renderDialogHtml, updateDialogHtml} from "../core/dialog";
 import waitForElm from "../util/util_wait_for_element";
 

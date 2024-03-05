@@ -1,10 +1,10 @@
-import { AlignedPlacement, Side } from "@floating-ui/core"
+import type { AlignedPlacement, Side } from "@floating-ui/core"
 import { TourGuideStep } from "../types/TourGuideStep"
 
 /**
  * TourGuideOptions Type
  */
-interface TourGuideOptions {
+export interface TourGuideOptions {
   autoScroll?: boolean // auto scroll to elements
   autoScrollSmooth?: boolean // auto scroll smooth
   autoScrollOffset?: number // Offset from edge for smooth scroll
@@ -37,5 +37,3 @@ interface TourGuideOptions {
   debug?: boolean // show console logging
   steps?: TourGuideStep[] // pre-define the tour steps
 }
-
-export default TourGuideOptions;
