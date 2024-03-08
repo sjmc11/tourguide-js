@@ -16,8 +16,15 @@ async function computeTourSteps(tgInstance : TourGuideClient){
             computedSteps = tgInstance.options.steps.map((t:TourGuideStep)=>{
                 // If target is string, query element by selector
                 if(typeof t.target === "string"){
-                    const targetElement = document.querySelector(t.target)
-                    if (targetElement) t.target = targetElement
+                    const targetElement = document.querySelector(t.target) as HTMLElement
+                    if (targetElement) {
+                        t.target = targetElement
+                        if (tgInstance.options.targetPadding && tgInstance.options.autoScrollOffset) {
+                            targetElement.style.scrollMargin = (tgInstance.options.autoScrollOffset + tgInstance.options.targetPadding) + "px 0"
+                        } else {
+                            targetElement.style.scrollMargin = "30px 0"
+                        }
+                    }
                 }
                 // If target is empty, set target to body
                 if(!t.target) t.target = document.body

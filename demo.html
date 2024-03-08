@@ -16,24 +16,48 @@
         <span class="bg-clip-text text-transparent bg-gradient-to-b from-slate-400/75 to-slate-400" id="title">Basic HTML page for hands on testing</span>
     </h1>
 
+    <button class="bg-indigo-600 text-white rounded px-4 py-2 mx-auto block hover:bg-indigo-700 mt-12" onclick="openTour()">
+        <span>Start tour</span>
+    </button><!-- end btn -->
+
     <div class="lg:grid lg:my-12 grid-cols-3 gap-12">
-        <div class="card rounded bg-slate-100 p-12 my-6 border" id="card1" data-tg-tour="Step 1" data-tg-title="Example heading 1">
+        <div class="card rounded bg-slate-100 p-12 my-6 border" id="card1">
             <h5 class="font-bold block mb-5">Example heading 1</h5>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias consequuntur cumque deserunt doloribus eos esse ipsam ipsum nam neque nisi odio officiis, pariatur sit tenetur voluptatum. Deserunt facilis quos tempora?</p>
         </div><!-- end card -->
-        <div class="card rounded bg-slate-100 p-12 my-6 border" id="card2" data-tg-tour="Step 2" data-tg-title="Example heading 2">
+        <div class="card rounded bg-slate-100 p-12 my-6 border" id="card2">
             <h5 class="font-bold block mb-5">Example heading 2</h5>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias consequuntur cumque deserunt doloribus eos esse ipsam ipsum nam neque nisi odio officiis, pariatur sit tenetur voluptatum. Deserunt facilis quos tempora?</p>
         </div><!-- end card -->
-        <div class="card rounded bg-slate-100 p-12 my-6 border" id="card3" data-tg-tour="Step 3" data-tg-title="Example heading 3">
+        <div class="card rounded bg-slate-100 p-12 my-6 border" id="card3">
+            <h5 class="font-bold block mb-5">Example heading 3</h5>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias consequuntur cumque deserunt doloribus eos esse ipsam ipsum nam neque nisi odio officiis, pariatur sit tenetur voluptatum. Deserunt facilis quos tempora?</p>
+        </div><!-- end card -->
+        <div class="card rounded bg-slate-100 p-12 my-6 border" id="card4" data-tg-tour="Step 1" data-tg-title="Example heading 1">
+            <h5 class="font-bold block mb-5">Example heading 1</h5>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias consequuntur cumque deserunt doloribus eos esse ipsam ipsum nam neque nisi odio officiis, pariatur sit tenetur voluptatum. Deserunt facilis quos tempora?</p>
+        </div><!-- end card -->
+        <div class="card rounded bg-slate-100 p-12 my-6 border" id="card5" data-tg-tour="Step 2" data-tg-title="Example heading 2">
+            <h5 class="font-bold block mb-5">Example heading 2</h5>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias consequuntur cumque deserunt doloribus eos esse ipsam ipsum nam neque nisi odio officiis, pariatur sit tenetur voluptatum. Deserunt facilis quos tempora?</p>
+        </div><!-- end card -->
+        <div class="card rounded bg-slate-100 p-12 my-6 border" id="card6" data-tg-tour="Step 3" data-tg-title="Example heading 3">
+            <h5 class="font-bold block mb-5">Example heading 3</h5>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias consequuntur cumque deserunt doloribus eos esse ipsam ipsum nam neque nisi odio officiis, pariatur sit tenetur voluptatum. Deserunt facilis quos tempora?</p>
+        </div><!-- end card -->
+        <div class="card rounded bg-slate-100 p-12 my-6 border" id="card7" data-tg-tour="Step 1" data-tg-title="Example heading 1">
+            <h5 class="font-bold block mb-5">Example heading 1</h5>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias consequuntur cumque deserunt doloribus eos esse ipsam ipsum nam neque nisi odio officiis, pariatur sit tenetur voluptatum. Deserunt facilis quos tempora?</p>
+        </div><!-- end card -->
+        <div class="card rounded bg-slate-100 p-12 my-6 border" id="card8" data-tg-tour="Step 2" data-tg-title="Example heading 2">
+            <h5 class="font-bold block mb-5">Example heading 2</h5>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias consequuntur cumque deserunt doloribus eos esse ipsam ipsum nam neque nisi odio officiis, pariatur sit tenetur voluptatum. Deserunt facilis quos tempora?</p>
+        </div><!-- end card -->
+        <div class="card rounded bg-slate-100 p-12 my-6 border" id="card9" data-tg-tour="Step 3" data-tg-title="Example heading 3">
             <h5 class="font-bold block mb-5">Example heading 3</h5>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias consequuntur cumque deserunt doloribus eos esse ipsam ipsum nam neque nisi odio officiis, pariatur sit tenetur voluptatum. Deserunt facilis quos tempora?</p>
         </div><!-- end card -->
     </div><!-- end grid -->
-
-    <button class="bg-indigo-600 text-white rounded px-4 py-2 mx-auto block hover:bg-indigo-700" onclick="openTour()">
-        <span>Start tour</span>
-    </button><!-- end btn -->
 
 </div><!-- end container -->
 
@@ -64,6 +88,19 @@
         target: "#card2",
         order: "",
         group: "groupA",
+        beforeEnter: ()=>{
+            return new Promise((resolve, reject) => {
+                // Reject entering the step
+                reject('skip step')
+                // Prevent loading state from stopping step navigation
+                tg._promiseWaiting = false
+                // Get the desired step index based on direction
+                let skipToIndex = 3
+                if (tg.activeStep === 3) skipToIndex = 1
+                // Visit the desired step
+                tg.visitStep(skipToIndex)
+            })
+        }
     },{
         content: "Card Three",
         title: "This is the last card",
