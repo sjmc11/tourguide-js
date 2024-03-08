@@ -1,6 +1,6 @@
 {
   "name": "@sjmc11/tourguidejs",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "A customizable tour guide library for front-end applications.",
   "homepage": "https://tourguidejs.com",
   "main": "dist/tour.js",
