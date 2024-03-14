@@ -20,7 +20,7 @@
         <span>Start tour</span>
     </button><!-- end btn -->
 
-    <div class="lg:grid lg:my-12 grid-cols-3 gap-12">
+    <div class="lg:grid lg:my-12 grid-cols-3 gap-12" id="grid-wrapper">
         <div class="card rounded bg-slate-100 p-12 my-6 border" id="card1">
             <h5 class="font-bold block mb-5">Example heading 1</h5>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias consequuntur cumque deserunt doloribus eos esse ipsam ipsum nam neque nisi odio officiis, pariatur sit tenetur voluptatum. Deserunt facilis quos tempora?</p>
@@ -71,6 +71,12 @@
         order: "",
         group: "groupA",
     },{
+        content: "Grid wrapper",
+        title: "Test positioning of a large element occupying the entire screen",
+        target: "#grid-wrapper",
+        order: "",
+        group: "groupA"
+    },{
         content: "Card One",
         title: "This is the first card",
         target: "#card1",
@@ -95,8 +101,8 @@
                 // Prevent loading state from stopping step navigation
                 tg._promiseWaiting = false
                 // Get the desired step index based on direction
-                let skipToIndex = 3
-                if (tg.activeStep === 3) skipToIndex = 1
+                let skipToIndex = 4
+                if (tg.activeStep === 4) skipToIndex = 2
                 // Visit the desired step
                 tg.visitStep(skipToIndex)
             })
@@ -113,6 +119,7 @@
         steps: steps,
         group: "groupA",
         completeOnFinish: true,
+        allowDialogOverlap: true,
     })
 
     // const triggerBtn = document.getElementById('tourTrigger')

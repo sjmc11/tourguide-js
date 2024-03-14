@@ -10,16 +10,13 @@ async function createTourGuideDialog(this : TourGuideClient){
     // Create base tour dialog element
     this.dialog = document.createElement('div')
     this.dialog.classList.add('tg-dialog')
-
     // Render HTML content
     await renderDialogHtml(this).then((html) => {
         this.dialog.innerHTML = html
     })
-
     document.body.append(this.dialog)
-
     return true
-};
+}
 
 /**
  * renderDialogHtml
@@ -195,7 +192,10 @@ function computeDialogPosition(tgInstance : TourGuideClient) {
                     autoAlignment: true,
                     padding: 5
                 }),
-                shift({padding: 15}),
+                shift({
+                    crossAxis: tgInstance.options.allowDialogOverlap,
+                    padding: 15
+                }),
                 arrow({element: arrowElement as HTMLElement}),
                 offset(20)
             ],

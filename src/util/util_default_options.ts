@@ -7,6 +7,7 @@ const defaultOptions = {
     hidePrev: false,
     hideNext: false,
     dialogClass: "",
+    allowDialogOverlap: false,
     dialogZ: 999,
     dialogWidth: 0,
     dialogMaxWidth: 340,

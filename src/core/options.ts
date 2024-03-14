@@ -13,6 +13,7 @@ export interface TourGuideOptions {
   backdropColor?: string // RGBA support only
   targetPadding?: number // space around highlighted target in px
   dialogClass?: string // css class for tour dialog
+  allowDialogOverlap?: boolean // allow dialog to overlap target
   dialogZ?: number // z-index of dialog
   dialogWidth?: number // width style property for dialog - recommended if loading images into content
   dialogMaxWidth?: number // max-width style property for dialog

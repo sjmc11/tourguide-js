@@ -77,6 +77,7 @@ TourGuide JS works by initializing a class, it contains all the relevant events,
     targetPadding: number // space around highlighted target in px | default = 30
     backdropAnimate: boolean // animate backdrop position & size | default = true
     dialogClass: string // additional css class for tour dialog | default = ""
+    allowDialogOverlap: boolean // allow dialog to overlap target | default = false
     dialogZ: number // z-index of dialog | default = 999
     dialogWidth: number // width style property for dialog - recommended if loading images into content | default = 0
     dialogMaxWidth: number // max-width style property for dialog | default = 340
