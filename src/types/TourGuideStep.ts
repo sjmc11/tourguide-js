@@ -3,6 +3,7 @@ class TourGuideStep {
     title?: string
     content!: string | HTMLElement | Element
     target?: HTMLElement | Element | HTMLInputElement | string | null = null
+    dialogTarget?: HTMLElement | Element | HTMLInputElement | string | null = null
     fixed?: boolean = false
     order?: number = 999
     group?: string = "tour"

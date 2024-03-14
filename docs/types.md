@@ -53,6 +53,7 @@ TourGuide JS works by initializing a class, it contains all the relevant events,
     title?: string // Tour step title
     content!: string | HTMLElement | Element // Tour step content
     target?: HTMLElement | Element | HTMLInputElement | string | null = null // Element to highlight
+    dialogTarget?: HTMLElement | Element | HTMLInputElement | string | null // Element to position dialog (use target if not defined)
     fixed?: boolean = false // Is target element fixed position | default = false
     order?: number = 999 // Order of step in the tour | default = 999
     group?: string = "tour" // Group specific tour steps together | default = 'tour'

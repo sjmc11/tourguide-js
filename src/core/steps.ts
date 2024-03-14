@@ -28,6 +28,17 @@ async function computeTourSteps(tgInstance : TourGuideClient){
                 }
                 // If target is empty, set target to body
                 if(!t.target) t.target = document.body
+
+                // If dialogTarget is string, query element by selector
+                if(typeof t.dialogTarget === "string") {
+                    const dialogTarget = document.querySelector(t.dialogTarget) as HTMLElement
+                    if (dialogTarget) {
+                        t.dialogTarget = dialogTarget
+                    } else {
+                        t.dialogTarget = undefined
+                    }
+                }
+
                 return t
             })
         }
@@ -46,6 +57,7 @@ async function computeTourSteps(tgInstance : TourGuideClient){
             const stepOrder = tourElem.getAttribute('data-tg-order')
             const stepFixed = tourElem.getAttribute('data-tg-fixed')
             const scrollMargin = tourElem.getAttribute('data-tg-margin')
+            const dialogTarget = tourElem.getAttribute('data-tg-dialog-target')
 
             // Apply scroll margin to element individually
             // TODO: Re-merge to one-liner with type-def fix for optional params
@@ -60,6 +72,7 @@ async function computeTourSteps(tgInstance : TourGuideClient){
                 title: stepTitle ? stepTitle : undefined,
                 order: stepOrder ? Number(stepOrder) : 999,
                 target: tourElem,
+                dialogTarget: dialogTarget ? document.querySelector(dialogTarget) : undefined,
                 content: stepContent ? stepContent : undefined,
                 fixed: stepFixed !== null && stepFixed !== "false",
                 group: stepGroup ? stepGroup : undefined,
