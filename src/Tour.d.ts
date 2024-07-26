@@ -14,24 +14,24 @@ export declare class TourGuideClient {
     activeStep: number;
     tourSteps: TourGuideStep[];
     options: TourGuideOptions;
-    isFinished: () => boolean;
+    isFinished: (tourGroup?: string) => boolean;
 
     // Constructor
     constructor(options?: TourGuideOptions);
 
     // Public methods
-    start(): void;
-    visitStep(stepIndex: number | 'next' | 'prev'): void;
-    addSteps(steps: TourGuideStep[]): void;
-    nextStep(): void;
-    prevStep(): void;
-    exit(): void;
-    refresh(): void;
-    refreshDialog(): void;
-    finishTour(): void;
-    updatePositions(): void;
-    deleteFinishedTour(groupKey: string | 'all'): void;
-    setOptions(options: TourGuideOptions): void;
+    start(group?: string): Promise<unknown>;
+    visitStep(stepIndex: number | 'next' | 'prev'): Promise<unknown>;
+    addSteps(steps: TourGuideStep[]): Promise<void>;
+    nextStep(): Promise<unknown>;
+    prevStep(): Promise<unknown>;
+    exit(): Promise<unknown>;
+    refresh(): Promise<unknown>;
+    refreshDialog(): Promise<unknown>;
+    finishTour(exit?: boolean, tourGroup?: string): Promise<boolean>;
+    updatePositions(): Promise<unknown>;
+    deleteFinishedTour(groupKey?: string | 'all'): void;
+    setOptions(options: TourGuideOptions): Promise<TourGuideClient>;
 
     // Callback properties (if these are meant to be public)
     _globalFinishCallback: () => void | Promise<unknown>;
