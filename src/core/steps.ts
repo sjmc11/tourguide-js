@@ -58,6 +58,7 @@ async function computeTourSteps(tgInstance : TourGuideClient){
             const stepFixed = tourElem.getAttribute('data-tg-fixed')
             const scrollMargin = tourElem.getAttribute('data-tg-margin')
             const dialogTarget = tourElem.getAttribute('data-tg-dialog-target')
+            const propagateEvents = tourElem.getAttribute('data-tg-propagate-events')
 
             // Apply scroll margin to element individually
             // TODO: Re-merge to one-liner with type-def fix for optional params
@@ -76,6 +77,7 @@ async function computeTourSteps(tgInstance : TourGuideClient){
                 content: stepContent ? stepContent : undefined,
                 fixed: stepFixed !== null && stepFixed !== "false",
                 group: stepGroup ? stepGroup : undefined,
+                propagateEvents: propagateEvents !== null && propagateEvents !== "false",
                 // TODO: Support events from data attributes
             } as TourGuideStep)
         })

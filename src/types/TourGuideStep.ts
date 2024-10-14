@@ -7,6 +7,7 @@ class TourGuideStep {
     fixed?: boolean = false
     order?: number = 999
     group?: string = "tour"
+    propagateEvents?: boolean = false
     // Enter events
     beforeEnter?: (currentStep: TourGuideStep, nextStep: TourGuideStep)=>(void | Promise<unknown>)
     afterEnter?: (currentStep: TourGuideStep, nextStep: TourGuideStep)=>(void | Promise<unknown>)

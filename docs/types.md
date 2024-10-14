@@ -57,6 +57,7 @@ TourGuide JS works by initializing a class, it contains all the relevant events,
     fixed?: boolean = false // Is target element fixed position | default = false
     order?: number = 999 // Order of step in the tour | default = 999
     group?: string = "tour" // Group specific tour steps together | default = 'tour'
+    propagateEvents?: boolean = false // Enabling this allow user to interact highlighted element(s)
     // Enter events
     beforeEnter?: (currentStep: TourGuideStep, nextStep: TourGuideStep)=>(void | Promise<unknown>)
     afterEnter?: (currentStep: TourGuideStep, nextStep: TourGuideStep)=>(void | Promise<unknown>)
