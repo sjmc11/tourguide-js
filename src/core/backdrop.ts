@@ -62,6 +62,8 @@ function computeBackdropPosition(tgInstance : TourGuideClient){
             // Enable resize detection
         }
 
+        // Propagation of event inside highlighted area
+        tgInstance.backdrop.style.pointerEvents = stepData.propagateEvents ? 'none' : '';
         // Prevent overlay being wider than screen
         tgInstance.backdrop.style.width = (isOverflow ? targetElemRect.width : (targetElemRect.width + tgInstance.options.targetPadding)) + "px"
         // Set height
