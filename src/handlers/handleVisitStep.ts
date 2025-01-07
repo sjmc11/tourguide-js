@@ -111,7 +111,7 @@ function goToStep(tgInstance: TourGuideClient, stepIndex : number){
         }
 
         // Before leave callback on current step
-        if (currentStep.beforeLeave) {
+        if (stepIndex !== currentStepIndex && currentStep.beforeLeave) {
             try {
                 await currentStep.beforeLeave(currentStep, nextStep)
             } catch (e){
@@ -164,7 +164,7 @@ function goToStep(tgInstance: TourGuideClient, stepIndex : number){
 
         /** After callbacks **/
         // After leave callback for current step
-        if (currentStep.afterLeave) await currentStep.afterLeave(currentStep, nextStep)
+        if (stepIndex !== currentStepIndex && currentStep.afterLeave) await currentStep.afterLeave(currentStep, nextStep)
 
         // After enter callback for next pending step (now the active step)
         if (nextStep.afterEnter) await nextStep.afterEnter(currentStep, nextStep)
