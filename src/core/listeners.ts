@@ -5,10 +5,6 @@ import {TourGuideClient} from "../Tour";
  * @param event : MouseEvent
  */
 const clickOutsideHandler = async function (this : TourGuideClient, event: MouseEvent){
-    event.preventDefault()
-    event.stopPropagation()
-    event.stopImmediatePropagation()
-
     // abort if did not click an element
     if (!(event.target instanceof Element)) return
 
@@ -23,6 +19,9 @@ const clickOutsideHandler = async function (this : TourGuideClient, event: Mouse
     // Ignore clicks on the dialog
     if (this.dialog.contains(event.target)) return
 
+    event.preventDefault()
+    event.stopPropagation()
+    event.stopImmediatePropagation()
     await this.exit()
 }
 
