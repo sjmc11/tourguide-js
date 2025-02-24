@@ -93,9 +93,13 @@ async function computeTourSteps(tgInstance : TourGuideClient){
         /**
          * Apply ordering
          */
+        computedSteps.forEach((v, i) => v._index = i);
         computedSteps.sort(function(a, b) {
-            const keyA = new Date(a.order as number), keyB = new Date(b.order as number);
-            return (keyA < keyB) ? -1 : 1;
+            if (a.order == b.order) {
+                return a._index - b._index;
+            } else {
+                return a.order - b.order;
+            }
         });
 
 
