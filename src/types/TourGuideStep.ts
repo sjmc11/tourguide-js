@@ -6,6 +6,7 @@ class TourGuideStep {
     dialogTarget?: HTMLElement | Element | HTMLInputElement | string | null = null
     fixed?: boolean = false
     order?: number = 999
+    _index?: number = 0
     group?: string = "tour"
     propagateEvents?: boolean = false
     // Enter events
