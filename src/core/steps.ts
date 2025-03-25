@@ -96,9 +96,9 @@ async function computeTourSteps(tgInstance : TourGuideClient){
         computedSteps.forEach((v, i) => v._index = i);
         computedSteps.sort(function(a, b) {
             if (a.order == b.order) {
-                return a._index - b._index;
+                return (a._index ?? 0 ) - (b._index ?? 0);
             } else {
-                return a.order - b.order;
+                return (a.order ?? 0) - (b.order ?? 0);
             }
         });
 
