@@ -8,6 +8,8 @@ Intuitive and customisable tours for user application onboarding
 <a href="https://tourguidejs.com/docs/"><strong>Explore the docs »</strong></a>
   
 <p align="center"><a href="https://www.buymeacoffee.com/sjmc11h" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a></p>
+
+<p align="center">If this library saved you time or helped your project, consider buying me a coffee — it fuels more features, faster fixes, and better support! ☕✨</p>
 </p>
 
 
