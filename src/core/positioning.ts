@@ -22,15 +22,6 @@ function computeTourPositions(this : TourGuideClient){
         if(this.options.dialogAnimate) setTimeout(()=>{this.dialog.classList.remove('animate-position')}, 300) // cancel after 300ms css transition complete
         this.isVisible = true
 
-        /**
-         * Resize & Scroll
-         */
-
-        // Re-compute on resize - dialog only
-        // if (!window.onscroll) window.onscroll = () => {
-        //     computeDialogPosition(this)
-        // }
-
         // Match timeout with CSS transition & smooth scroll
         setTimeout(() => {
             return resolve(true)
