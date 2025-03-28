@@ -32,7 +32,8 @@ const defaultOptions = {
     closeButton: true,
     rememberStep: false,
     debug: true,
-    steps: []
+    steps: [],
+    activeStepInteraction: true,
 } as TourGuideOptions
 
 export default defaultOptions

@@ -48,8 +48,10 @@ async function handleTourStart(this: TourGuideClient, group?: string) {
 
             // Add transition class to dialog after additional delay to prevent flying in from random position
             if(this.options.dialogAnimate) this.dialog.classList.add('animate-position')
-                // setTimeout(()=>{
-            // }, 100)
+
+            if(!this.options.exitOnClickOutside){
+                document.body.classList.add('tg-no-interaction');
+            }
         })
 
 

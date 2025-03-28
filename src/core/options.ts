@@ -37,4 +37,5 @@ export interface TourGuideOptions {
   rememberStep?: boolean // open tour on last active step
   debug?: boolean // show console logging
   steps?: TourGuideStep[] // pre-define the tour steps
+  activeStepInteraction?: boolean // allow active tour step element to be interacted with
 }

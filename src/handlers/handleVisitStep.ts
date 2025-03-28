@@ -93,6 +93,9 @@ function goToStep(tgInstance: TourGuideClient, stepIndex : number){
         const nextStep = tgInstance.tourSteps[stepIndex]
         if (!nextStep || !currentStep) return bail("Step not found by index")
 
+        /** Clear active class from current step **/
+        if(currentStep.target) (currentStep.target as HTMLElement).classList.remove('tg-active-element');
+
 
         /** Before callbacks **/
         // If any callbacks exist, set loading state
@@ -153,13 +156,17 @@ function goToStep(tgInstance: TourGuideClient, stepIndex : number){
         /**
          * Scroll to target
          */
-        if (tgInstance.options.autoScroll && nextStep.target !== document.body) await scrollToTarget(tgInstance, nextStep.target as HTMLElement)
+        if (tgInstance.options.autoScroll && nextStep.target !== document.body) scrollToTarget(tgInstance, nextStep.target as HTMLElement)
 
 
         /**
          * Update backdrop & dialog positions & display
          */
         await tgInstance.updatePositions()
+
+
+        /** apply active element class **/
+        if(tgInstance.options.activeStepInteraction) (nextStep.target as HTMLElement).classList.add('tg-active-element')
 
 
         /** After callbacks **/

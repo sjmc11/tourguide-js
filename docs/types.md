@@ -102,5 +102,6 @@ TourGuide JS works by initializing a class, it contains all the relevant events,
     rememberStep: boolean // open tour on last active step | default = true
     debug: boolean // show console logging | default = false
     steps: TourGuideStep[] // pre-define the tour steps
+    activeStepInteraction: boolean // allow user to interact with highlighted element | default = true
 }
 ```

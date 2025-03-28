@@ -19,6 +19,8 @@ async function handleClose(this: TourGuideClient) {
 
         if (this.options.debug) console.info("Tour exited")
 
+        document.body.classList.remove('tg-no-interaction');
+
         await this.destroyListeners()
 
         setTimeout(() => {
