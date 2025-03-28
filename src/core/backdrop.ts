@@ -24,6 +24,9 @@ function computeBackdropAttributes(this : TourGuideClient){
     if(this.options.backdropClass) this.backdrop.classList.add(this.options.backdropClass)
     // Animation class
     if(this.options.dialogAnimate) this.backdrop.classList.add('tg-backdrop-animate')
+    // Allow interaction
+    if(this.options.activeStepInteraction) this.backdrop.classList.add('allow-interaction')
+
 }
 
 function computeBackdropPosition(tgInstance : TourGuideClient){

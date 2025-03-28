@@ -18,9 +18,11 @@ $popperPadding: 25px;
   left:50vw;
   width:0;
   height:0;
-  pointer-events: none;
   &.tg-backdrop-animate{
     transition: all 300ms;
+  }
+  &.allow-interaction{
+    pointer-events: none;
   }
 }
 .tg-dialog{
