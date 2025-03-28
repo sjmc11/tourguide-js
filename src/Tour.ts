@@ -11,9 +11,9 @@
 
 // CORE
 import type {TourGuideOptions} from "./core/options";
-import {createTourGuideDialog} from "./core/dialog";
+import {computeDialogPosition, createTourGuideDialog} from "./core/dialog";
 import computeTourPositions from "./core/positioning";
-import {computeBackdropAttributes, createTourGuideBackdrop} from "./core/backdrop";
+import {computeBackdropAttributes, computeBackdropPosition, createTourGuideBackdrop} from "./core/backdrop";
 import {handleOnAfterExit, handleOnAfterStepChange, handleOnBeforeExit, handleOnBeforeStepChange, handleOnFinish} from "./core/callbacks";
 import {clickOutsideHandler, handleDestroyListeners, handleInitListeners, keyPressHandler} from "./core/listeners";
 // Step Type
@@ -127,6 +127,19 @@ class TourGuideClient{
         outsideClickEvent: {
             initialized: false,
             fn: clickOutsideHandler.bind(this)
+        },
+        resizeEvent: {
+            initialized: false,
+            fn: async function () {
+                await computeBackdropPosition(this);
+                await computeDialogPosition(this);
+            }.bind(this)
+        },
+        scrollEvent: {
+            initialized: false,
+            fn: async function () {
+                await computeDialogPosition(this);
+            }.bind(this)
         },
     }
 

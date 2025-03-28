@@ -159,6 +159,8 @@ function computeDialogPosition(tgInstance : TourGuideClient) {
     return new Promise(async (resolve) => {
         const arrowElement: HTMLElement | null = document.querySelector('#tg-arrow');
 
+        console.log(tgInstance.activeStep);
+
         let targetElem = (tgInstance.tourSteps[tgInstance.activeStep].dialogTarget || tgInstance.tourSteps[tgInstance.activeStep].target) as HTMLElement
 
         // Center position if body

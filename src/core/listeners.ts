@@ -102,6 +102,20 @@ function handleInitListeners(this : TourGuideClient) {
         this._trackedEvents['keyPressEvent'].initialized = true
     }
 
+    /** Resize **/
+    const initResizeListener = ()=>{
+        if (this._trackedEvents['resizeEvent'].initialized) return
+        window.addEventListener("resize", this._trackedEvents.resizeEvent.fn, false);
+        this._trackedEvents['resizeEvent'].initialized = true
+    }
+
+    /** Scroll **/
+    const initScrollListener = ()=>{
+        if (this._trackedEvents['scrollEvent'].initialized) return
+        window.addEventListener("scroll", this._trackedEvents.scrollEvent.fn, false);
+        this._trackedEvents['scrollEvent'].initialized = true
+    }
+
 
     /**
      * Primary method
@@ -124,6 +138,16 @@ function handleInitListeners(this : TourGuideClient) {
          * Setup listeners for keyboard controls
          */
         if (this.options.keyboardControls || this.options.exitOnEscape) initKeysListener()
+
+        /**
+         * Setup listeners for window resize
+         */
+        initResizeListener()
+
+        /**
+         * Setup listeners for scroll
+         */
+        initScrollListener()
 
         return resolve(true)
     })
@@ -168,6 +192,16 @@ function handleDestroyListeners(this : TourGuideClient){
         this._trackedEvents['keyPressEvent'].initialized = false
     }
 
+    const destroyResizeListener = ()=>{
+        window.removeEventListener("resize", this._trackedEvents.resizeEvent.fn, false);
+        this._trackedEvents['resizeEvent'].initialized = false
+    }
+
+    const destroyScrollListener = ()=>{
+        window.removeEventListener("scroll", this._trackedEvents.scrollEvent.fn, false);
+        this._trackedEvents['scrollEvent'].initialized = false
+    }
+
     return new Promise((resolve) => {
         /**
          * Destroy click events for next, prev & close buttons
@@ -185,6 +219,16 @@ function handleDestroyListeners(this : TourGuideClient){
          * Destroy listeners for keyboard controls
          */
         if (this.options.keyboardControls || this.options.exitOnEscape) destroyKeysListener()
+
+        /**
+         * Destroy listeners for window resize
+         */
+        destroyResizeListener()
+
+        /**
+         * Destroy listeners for scroll
+         */
+        destroyScrollListener()
 
         return resolve(true)
     })

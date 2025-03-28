@@ -26,22 +26,15 @@ function computeTourPositions(this : TourGuideClient){
          * Resize & Scroll
          */
 
-        // Re-compute on resize
-        if (!window.onresize) window.onresize = () => {
-            computeBackdropPosition(this)
-            computeDialogPosition(this)
-        }
-
         // Re-compute on resize - dialog only
-        if (!window.onscroll) window.onscroll = () => {
-            computeDialogPosition(this)
-        }
+        // if (!window.onscroll) window.onscroll = () => {
+        //     computeDialogPosition(this)
+        // }
 
         // Match timeout with CSS transition & smooth scroll
-        await setTimeout(()=>{
+        setTimeout(() => {
             return resolve(true)
         }, 300)
-
 
     })
 }
