@@ -150,8 +150,8 @@ class TourGuideClient{
     _globalFinishCallback? : ()=>(void | Promise<unknown>)
     _globalBeforeExitCallback? : ()=>(void | Promise<unknown>)
     _globalAfterExitCallback? : Function
-    _globalBeforeChangeCallback? : ()=>(void | Promise<unknown>)
-    _globalAfterChangeCallback? : ()=>(void | Promise<unknown>)
+    _globalBeforeChangeCallback? : (currentStepIndex: number, stepIndex: number)=>(void | Promise<unknown>)
+    _globalAfterChangeCallback? : (previousStepIndex: number, stepIndex: number)=>(void | Promise<unknown>)
 
     // FINISH
     readonly onFinish = handleOnFinish
