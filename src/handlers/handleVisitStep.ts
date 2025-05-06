@@ -107,7 +107,7 @@ function goToStep(tgInstance: TourGuideClient, stepIndex : number){
         // Before change callback - global
         if(tgInstance._globalBeforeChangeCallback && stepIndex !== currentStepIndex){
             try {
-                await tgInstance._globalBeforeChangeCallback()
+                await tgInstance._globalBeforeChangeCallback(currentStepIndex, stepIndex)
             } catch (e){
                 return bail(e)
             }
@@ -177,7 +177,7 @@ function goToStep(tgInstance: TourGuideClient, stepIndex : number){
         if (nextStep.afterEnter) await nextStep.afterEnter(currentStep, nextStep)
 
         // After change callback - global
-        if(tgInstance._globalAfterChangeCallback && stepIndex !== currentStepIndex) await tgInstance._globalAfterChangeCallback()
+        if(tgInstance._globalAfterChangeCallback && stepIndex !== currentStepIndex) await tgInstance._globalAfterChangeCallback(currentStepIndex, stepIndex)
 
         // Clear loading state
         tgInstance._promiseWaiting = false
